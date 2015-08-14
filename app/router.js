@@ -6,7 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-	this.route('weathers');
+  this.route('weathers');
+  this.route('weather');
 });
 
 export default Router;

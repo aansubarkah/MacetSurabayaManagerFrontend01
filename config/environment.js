@@ -3,6 +3,7 @@
 module.exports = function (environment) {
 	var ENV = {
 		modulePrefix: 'macet-surabaya-manager-frontend',
+		podModulePrefix: 'macet-surabaya-manager-frontend/pods',
 		environment: environment,
 		baseURL: '/',
 		locationType: 'auto',

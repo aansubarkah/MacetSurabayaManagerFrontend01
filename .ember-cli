@@ -7,5 +7,6 @@
   */
   "disableAnalytics": false,
   "liveReload": true,
-  "watcher": "polling"
+  "watcher": "polling",
+  "usePods": true
 }

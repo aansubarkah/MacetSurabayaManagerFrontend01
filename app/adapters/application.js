@@ -3,8 +3,8 @@
  */
 import DS from 'ember-data';
 
-export default DS.Adapter.extend({
-	//export default DS.RESTAdapter.extend({
+//export default DS.Adapter.extend({
+export default DS.RESTAdapter.extend({
 	//shouldReloadAll(){return false;}
 	shouldReloadAll: function () {
 		return false;
@@ -12,7 +12,8 @@ export default DS.Adapter.extend({
 	shouldBackgroundReloadRecord: function () {
 		return false;
 	},
-	host: 'http://localhost:8765/manager',
+	namespace: 'manager',
+	host: 'http://localhost:8765',
 	ajax: function (url, method, hash) {
 		//"Accept": "application/json",
 		//"Content-Type": "application/json"

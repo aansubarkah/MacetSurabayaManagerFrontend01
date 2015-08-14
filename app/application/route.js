@@ -7,15 +7,15 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	queryParams: {
 		state: { refreshModel: true }
-	},
+	}
 
 	// @todo change this model section
-	model(params) {
-		return this.store.findAll('todo').then((todos) => {
+	/*model(params) {
+		return this.store.findAll('wheater').then((wheaters) => {
 			return {
-				all: todos,
+				all: wheaters,
 				filter: params.state
 			};
 		});
-	}
+	}*/
 });

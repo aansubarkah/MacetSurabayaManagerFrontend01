@@ -1,0 +1,11 @@
+body {
+	padding-top: 0px;
+}
+
+nav .active {
+	font-weight: bold;
+}
+
+.muted {
+	opacity: 0.5;
+}

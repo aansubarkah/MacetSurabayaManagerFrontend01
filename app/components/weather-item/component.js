@@ -5,7 +5,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	tagName: 'li',
-	classNameBindings: ['wheater.active:completed', 'isEditing:editing'],
+	classNameBindings: ['weather.active:completed', 'isEditing:editing'],
 
 	init() {
 		this._super(...arguments);
@@ -18,15 +18,15 @@ export default Ember.Component.extend({
 		},
 
 		removeTodo() {
-			var wheater = this.get('wheater');
+			var weather = this.get('weather');
 
-			wheater.deleteRecord();
-			wheater.save();
+			weather.deleteRecord();
+			weather.save();
 		},
 
 		save() {
 			this.set('isEditing', false);
-			this.get('wheater').save();
+			this.get('weather').save();
 		}
 	}
 });

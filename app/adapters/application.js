@@ -12,7 +12,7 @@ export default DS.Adapter.extend({
 	shouldBackgroundReloadRecord: function () {
 		return false;
 	},
-	host: 'http://localhost:8765',
+	host: 'http://localhost:8765/manager',
 	ajax: function (url, method, hash) {
 		//"Accept": "application/json",
 		//"Content-Type": "application/json"

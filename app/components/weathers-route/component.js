@@ -3,7 +3,7 @@
  */
 import Ember from 'ember';
 
-var isEmpty = Ember.isEmpty;
+//var isEmpty = Ember.isEmpty;
 var filterBy = Ember.computed.filterBy;
 var computed = Ember.computed;
 var service = Ember.inject.service;
@@ -11,9 +11,9 @@ var service = Ember.inject.service;
 export default Ember.Component.extend({
 	store: service(),
 
-	filtered: computed('wheaters.@each.isCompleted', 'filter', function () {
+	filtered: computed('weathers.@each.isCompleted', 'filter', function () {
 		var filter = this.get('filter');
-		var all = this.get('wheaters');
+		var all = this.get('weathers');
 
 		if (filter === 'all') {
 			return all;
@@ -22,8 +22,8 @@ export default Ember.Component.extend({
 		return all.filterBy('active', filter === 1);
 	}),
 
-	active: filterBy('wheaters', 'active', true),
-	//active: filterBy('wheaters', 'isCompleted', false),
+	active: filterBy('weathers', 'active', true),
+	//active: filterBy('weathers', 'isCompleted', false),
 
 	inflection: computed('active.[]', function () {
 		var active = this.get('active.length');
@@ -31,10 +31,10 @@ export default Ember.Component.extend({
 	}).readOnly(),
 
 	actions: {
-		createWheater() {
+		createWeather() {
 			const store = this.get('store');
 
-			// Get the wheater title set by the "New Wheater" text field
+			// Get the weather title set by the "New Weather" text field
 			var name = this.get('newName');
 
 			if (name && !name.trim()) {
@@ -42,16 +42,16 @@ export default Ember.Component.extend({
 				return;
 			}
 
-			// Create the new Wheater model
-			var wheater = store.createRecord('wheater', {
+			// Create the new Weather model
+			var weather = store.createRecord('weather', {
 				name: name
 			});
 
-			// Clear the "New Wheater" text field
+			// Clear the "New Weather" text field
 			this.set('newName', '');
 
 			// Save the new model
-			wheater.save();
+			weather.save();
 		}
 	}
 });

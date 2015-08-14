@@ -4,6 +4,16 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
 	var app = new EmberApp(defaults, {
 		// Add options here
+		minifyCSS: {
+			enabled: true
+		},
+		minifyJS: {
+			enabled: true
+		},
+		sourcemaps: {
+			enabled: false,
+			extensions: ['js']
+		}
 	});
 
 	// Use `app.import` to add additional libraries to the generated
@@ -21,6 +31,7 @@ module.exports = function (defaults) {
 
 	app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
 	app.import('bower_components/admin-lte/dist/css/AdminLTE.min.css');
+	app.import('bower_components/admin-lte/dist/css/skins/_all-skins.min.css');
 	app.import('bower_components/moment/min/moment-with-locales.min.js');
 	return app.toTree();
 };

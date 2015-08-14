@@ -1,0 +1,9 @@
+{{#if isEditing}}
+    {{edit-weather class='edit' value=weather.title
+    focus-out='save'
+    insert-newline='save'}}
+{{else}}
+    {{input type='checkbox' checked=weather.isCompleted class='toggle'}}
+    <label {{action 'editTodo' on='doubleClick'}}>{{weather.name}}</label>
+    <button {{action 'removeTodo'}} class='destroy'></button>
+{{/if}}

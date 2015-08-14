@@ -20,10 +20,10 @@ module.exports = function (environment) {
 
 		contentSecurityPolicy: {
 			'default-src': "'none'",
-			'script-src': "'self'",
+			//'script-src': "'self'",
 			'font-src': "'self'",
 			'connect-src': "'self' http://localhost:8765",//@todo for productions change this url
-			'img-src': "'self' data:",
+			'img-src': "'self'",
 			'style-src': "'self'",
 			'media-src': "'self'"
 		}

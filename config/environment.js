@@ -21,11 +21,11 @@ module.exports = function (environment) {
 
 		contentSecurityPolicy: {
 			'default-src': "'none'",
-			'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
-			'font-src': "'self' https://maxcdn.bootstrapcdn.com",
+			'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://cdn.datatables.net https://code.jquery.com https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com",
+			'font-src': "'self' https://maxcdn.bootstrapcdn.com https://cdn.datatables.net https://fonts.gstatic.com",
 			'connect-src': "'self' http://localhost:8765",
 			'img-src': "'self'",
-			'style-src': "'self' 'unsafe-inline' https://code.ionicframework.com https://maxcdn.bootstrapcdn.com",
+			'style-src': "'self' 'unsafe-inline' https://code.ionicframework.com https://maxcdn.bootstrapcdn.com https://cdn.datatables.net",
 			'media-src': "'self'"
 		}
 	};

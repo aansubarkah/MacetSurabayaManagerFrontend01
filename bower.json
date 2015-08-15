@@ -16,6 +16,7 @@
   "devDependencies": {
     "bootstrap": "~3.3.5",
     "moment": "~2.10.6",
-    "admin-lte": "~2.2.1"
+    "admin-lte": "~2.2.1",
+    "DataTables": "~1.10.8"
   }
 }

@@ -40,12 +40,18 @@ module.exports = function (defaults) {
 	// AdminLTE plugins
 	app.import('bower_components/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js');
 
-	app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.js');
-	app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.css');
-	app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.min.js');
-	app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css');
+	//app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.js');
+	//app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.css');
+	//app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.min.js');
+	//app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css');
+
+	// DataTables
+	//app.import('bower_components/DataTables/media/css/jquery.dataTables.min.css');
+	app.import('bower_components/DataTables/media/css/dataTables.bootstrap.min.css');
+	app.import('bower_components/DataTables/media/js/jquery.dataTables.min.js');
+	app.import('bower_components/DataTables/media/js/dataTables.bootstrap.min.js');
 
 	// Moment.js
-	app.import('bower_components/moment/min/moment-with-locales.min.js');
+	//app.import('bower_components/moment/min/moment-with-locales.min.js');
 	return app.toTree();
 };

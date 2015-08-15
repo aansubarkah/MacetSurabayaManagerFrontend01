@@ -1,0 +1,90 @@
+<header class="main-header">
+    {{#link-to "application" class="logo"}}Surabaya Traffic{{/link-to}}
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button -->
+        <a class="sidebar-toggle" href="#" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="hidden-xs">Alexander Pierce</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <p>
+                                Alexander Pierce - Web Developer
+                                <small>Member since Nov. 2012</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <li class="user-body">
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Followers</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Sales</a>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <a href="#">Friends</a>
+                            </div>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+<aside class="main-sidebar"><!-- .content -->
+    <div class="main-sidebar">
+        <!-- Inner sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="header">Data Statis</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li>{{#link-to "weathers"}}<span>Cuaca</span>{{/link-to}}</li>
+                <li class="treeview">
+                    <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="#">Link in level 2</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </div>
+    <!-- /.main-sidebar -->
+</aside>
+<!-- /.menu -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Header or Breadcrumb</h1>
+    </section>
+    <!-- content header -->
+    <section class="content">
+        {{outlet}}
+    </section>
+</div>
+<footer class="main-footer"><!-- .footer -->
+
+</footer>
+<!-- /.footer -->

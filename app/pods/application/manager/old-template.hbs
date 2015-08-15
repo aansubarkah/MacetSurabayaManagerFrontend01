@@ -1,0 +1,69 @@
+<header class="main-header">
+    <nav class="navbar navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                {{#link-to "application" class="navbar-brand"}}Surabaya Traffic{{/link-to}}
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{username}} <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Change Password</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</header>
+
+<aside class="main-sidebar"><!-- .content -->
+    <div class="main-sidebar">
+        <!-- Inner sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="header">Data Statis</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li>{{#link-to "weathers"}}<span>Cuaca</span>{{/link-to}}</li>
+                <li class="treeview">
+                    <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="#">Link in level 2</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </div>
+    <!-- /.main-sidebar -->
+</aside>
+<!-- /.menu -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Header or Breadcrumb</h1>
+    </section>
+    <!-- content header -->
+    <section class="content">
+        {{outlet}}
+    </section>
+</div>
+<footer class="main-footer"><!-- .footer -->
+
+</footer>
+<!-- /.footer -->

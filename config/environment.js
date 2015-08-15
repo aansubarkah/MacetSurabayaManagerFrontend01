@@ -21,11 +21,11 @@ module.exports = function (environment) {
 
 		contentSecurityPolicy: {
 			'default-src': "'none'",
-			'script-src': "'self' 'unsafe-inline' 'unsafe-eval' http://localhost:4200",
-			'font-src': "'self'",
+			'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+			'font-src': "'self' https://maxcdn.bootstrapcdn.com",
 			'connect-src': "'self' http://localhost:8765",
 			'img-src': "'self'",
-			'style-src': "'self' 'unsafe-inline'",
+			'style-src': "'self' 'unsafe-inline' https://code.ionicframework.com https://maxcdn.bootstrapcdn.com",
 			'media-src': "'self'"
 		}
 	};

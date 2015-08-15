@@ -9,5 +9,6 @@ export default Ember.Controller.extend({
 	queryParams: [
 		'state'
 	],
-	isManager: false
+	isManager: true,
+	username: "Aan Subarkah"
 });

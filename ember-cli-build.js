@@ -29,6 +29,7 @@ module.exports = function (defaults) {
 	// please specify an object with the list of modules as keys
 	// along with the exports of each module as its value.
 
+	// Bootstrap
 	app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
 	app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
 
@@ -40,16 +41,22 @@ module.exports = function (defaults) {
 	// AdminLTE plugins
 	app.import('bower_components/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js');
 
-	//app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.js');
+	app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.js');
 	//app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.css');
-	//app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.min.js');
-	//app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css');
+	app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.min.js');
+	app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css');
+
+	// EmberTable
+	app.import('bower_components/ember-table/dist/ember-table.min.js');
+	app.import('bower_components/ember-table/dist/ember-table.css');
+	//app.import('bower_components/admin-lte/dist/css/AdminLTE.min.css');
+	//app.import('bower_components/admin-lte/dist/css/skins/_all-skins.min.css');
 
 	// DataTables
 	//app.import('bower_components/DataTables/media/css/jquery.dataTables.min.css');
-	app.import('bower_components/DataTables/media/css/dataTables.bootstrap.min.css');
-	app.import('bower_components/DataTables/media/js/jquery.dataTables.min.js');
-	app.import('bower_components/DataTables/media/js/dataTables.bootstrap.min.js');
+	//app.import('bower_components/DataTables/media/css/dataTables.bootstrap.min.css');
+	//app.import('bower_components/DataTables/media/js/jquery.dataTables.min.js');
+	//app.import('bower_components/DataTables/media/js/dataTables.bootstrap.min.js');
 
 	// Moment.js
 	//app.import('bower_components/moment/min/moment-with-locales.min.js');

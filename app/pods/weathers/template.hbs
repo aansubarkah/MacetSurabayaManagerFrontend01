@@ -1,1 +1,11 @@
-{{weathers-table data=model}}
+<div class="box">
+    <div class="box-header">
+        Weathers
+    </div>
+    <div class="box-body">
+        {{ember-table
+        hasFooter=false
+        columns=tableColumns
+        content=tableContent}}
+    </div>
+</div>

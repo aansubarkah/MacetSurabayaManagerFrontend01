@@ -11,12 +11,19 @@
     "ember-resolver": "~0.1.18",
     "jquery": "^1.11.3",
     "loader.js": "ember-cli/loader.js#3.2.1",
-    "qunit": "~1.18.0"
+    "qunit": "~1.18.0",
+    "antiscroll": "git://github.com/Addepar/antiscroll#e0d1538cf4f3fd61c5bedd6168df86d651f125da",
+    "jquery-mousewheel": "~3.1.4",
+    "jquery-ui": "~1.11.4"
   },
   "devDependencies": {
     "bootstrap": "~3.3.5",
     "moment": "~2.10.6",
     "admin-lte": "~2.2.1",
-    "DataTables": "~1.10.8"
+    "DataTables": "~1.10.8",
+    "ember-table": "~0.9.2",
+    "ember": "~2.0.0",
+    "ember-qunit": "~0.4.9",
+    "qunit": "~1.18.0"
   }
 }

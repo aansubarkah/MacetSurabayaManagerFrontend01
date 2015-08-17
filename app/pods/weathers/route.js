@@ -9,6 +9,9 @@ export default Ember.Route.extend({
 		if (Ember.isPresent(params.limit)) {
 			query.limit = params.limit;
 		}
+		if (Ember.isPresent(params.query)) {
+			query.query = params.query;
+		}
 
 		return this.store.query('weather', query);
 	},
@@ -21,6 +24,9 @@ export default Ember.Route.extend({
 			refreshModel: true
 		},
 		limit: {
+			refreshModel: true
+		},
+		query: {
 			refreshModel: true
 		}
 	}

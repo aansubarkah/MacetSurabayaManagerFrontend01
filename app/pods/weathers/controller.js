@@ -2,16 +2,21 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
-	needs: ['application'],
-	//applicationController: Ember.inject.controller('application'),
-	queryParams: ['page', 'limit'],
-	//halaman: this.parent.pa
-	//page: Ember.computed.reads('applicationController.page'),
+	queryParams: ['page', 'limit', 'query'],
 	page: 1,
-	limit: 5,
+	limit: 25,
+	query: '',
 	total: null,
 	totalPages: function () {
 		return Math.ceil(this.get('total') / this.limit);
 	}.property('total'),
+	firstRowNumber: function () {
+		return (((this.page - 1) * this.limit) + 1);
+	}.property('page', 'limit'),
+	lastRowNumber: function () {
+		var number = 0;
+		(this.limit * this.page) > this.total ? number = this.total : number = (this.limit * this.page);
+		return number;
+	}.property('page', 'total', 'limit'),
 	actions: {}
 });

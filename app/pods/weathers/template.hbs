@@ -1,6 +1,14 @@
 <div class="box">
     <div class="box-header">
-        Weathers
+        <h3 class="box-title">Weathers</h3>
+
+        <div class="box-tools">
+            <div class="input-group">
+                {{input type="text" classNames="form-control" placeholder="Search" key-press="querySearchChanged" value=query}}
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            </div>
+        </div>
+
     </div>
     <div class="box-body">
         <table class="table table-striped">
@@ -14,13 +22,19 @@
             <tbody>
             {{#each model as |weather index|}}
                 <tr>
-                    <td>{{basic-math index "+" 1}}</td>
+                    <td>{{basic-math index "+" firstRowNumber}}</td>
                     <td>{{weather.name}}</td>
                     <td>{{weather.active}}</td>
                 </tr>
             {{/each}}
             </tbody>
         </table>
-        {{pagination-pager count=totalPages current=page}}
+    </div>
+    <div class="box-footer clearfix">
+        <p class="pull-left">Displaying row {{firstRowNumber}} to {{lastRowNumber}} from {{total}} rows</p>
+
+        <div class="box-tools">
+            {{pagination-pager count=totalPages current=page}}
+        </div>
     </div>
 </div>

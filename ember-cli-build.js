@@ -47,8 +47,8 @@ module.exports = function (defaults) {
 	app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css');
 
 	// EmberTable
-	app.import('bower_components/ember-table/dist/ember-table.min.js');
-	app.import('bower_components/ember-table/dist/ember-table.css');
+	//app.import('bower_components/ember-table/dist/ember-table.min.js');
+	//app.import('bower_components/ember-table/dist/ember-table.css');
 	//app.import('bower_components/admin-lte/dist/css/AdminLTE.min.css');
 	//app.import('bower_components/admin-lte/dist/css/skins/_all-skins.min.css');
 
@@ -59,6 +59,6 @@ module.exports = function (defaults) {
 	//app.import('bower_components/DataTables/media/js/dataTables.bootstrap.min.js');
 
 	// Moment.js
-	//app.import('bower_components/moment/min/moment-with-locales.min.js');
+	app.import('bower_components/moment/min/moment-with-locales.min.js');
 	return app.toTree();
 };

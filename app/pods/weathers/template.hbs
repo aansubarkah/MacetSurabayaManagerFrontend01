@@ -3,9 +3,47 @@
         Weathers
     </div>
     <div class="box-body">
-        {{ember-table
-        hasFooter=false
-        columns=tableColumns
-        content=tableContent}}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Active</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each model as |weather index|}}
+                <tr>
+                    <td>{{basic-math index "+" 1}}</td>
+                    <td>{{weather.name}}</td>
+                    <td>{{weather.active}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        <div class="pagination">
+            {{!-- If we're on the first page, do not display the link --}}
+            {{#if isFirstPage}}
+                <a href="#">Previous</a>
+            {{else}}
+                {{#link-to (query-params page=prevPage)}}Previous{{/link-to}}
+            {{/if}}
+
+            {{!--
+              For each page, display a link leading to it.
+              We could be smart and disable the link for the current page,
+              just like we're doing for the "previous"/"next" links.
+            --}}
+            {{#each num in pageRange}}
+                {{#link-to (query-params page=num)}}{{num}}{{/link-to}}
+            {{/each}}
+
+            {{!-- If we're on the last page, do not display the link --}}
+            {{#if isLastPage}}
+                <a href="#">Next</a>
+            {{else}}
+                {{#link-to (query-params page=nextPage)}}Next{{/link-to}}
+            {{/if}}
+        </div>
     </div>
 </div>

@@ -4,10 +4,27 @@ export default Ember.Component.extend({
 	tagName: "table",
 	classNames: ['table', 'table-bordered', 'table-striped'],
 	didInsertElement: function () {
+		/*var dev = this.get('data');
+		dev.then(function (realDev) {
+			var devAry = realDev.toArray();
+			console.log(devAry);
+		});*/
+		var data = this.get('data');
+		//var data = this.get('data').getEach('data');
+		console.log(data);
+		//Ember.computed('data.@each.name',function(){
+		//	console.log(data.get('name'));
+		//});
+		//Ember.computed('')
+		//var data = this.get('data').toArray();
+		//var jsonData = data.map(function(myModel){
+		//return myModel.toJSON();
+		//});
+		//console.log(this.populateWeather);
 		//this.get('populateWeather');
 		//var weatherData = this.populateWeather();
 		//var data = this.get('data').getEach('data');
-		console.log(this.get('data')['content']);
+		//console.log(this.get('data')['content']);
 		//console.log(this.get('populateWeather'));
 		var dataSet = [
 			["Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800"],
@@ -48,35 +65,22 @@ export default Ember.Component.extend({
 			["Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675"]
 		];
 		this.$().DataTable({
-			data: this.get('populateWeather'),
-			columns: [
-				{title: "id"},
-				{title: "name"},
-				{title: "active"}
-			],
+			data: dataSet,
 			/*columns: [
-			 {title: "Name"},
-			 {title: "Position"},
-			 {title: "Office"},
-			 {title: "Extn."},
-			 {title: "Start date"},
-			 {title: "Salary"}
+			 {title: "id"},
+			 {title: "name"},
+			 {title: "active"}
 			 ],*/
+			columns: [
+				{title: "Name"},
+				{title: "Position"},
+				{title: "Office"},
+				{title: "Extn."},
+				{title: "Start date"},
+				{title: "Salary"}
+			],
 			dom: '<"top pull-left"f><"top pull-right"p>t<"bottom pull-left"l><"bottom pull-right"i><"clear">',
 			lengthMenu: [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]]
-		});
-	},
-	populateWeather: function () {
-		var store = this.get('data');
-		//return store.map(function(item){
-		//	return item.getProperties('id','name','active');
-			//return item.toJSON();
-		//});
-		//Get store
-		//var store = this.get('data');
-		//Search store
-		store.map(item => {
-			console.log(item.get('content'));
 		});
 	}
 });

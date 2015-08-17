@@ -10,5 +10,7 @@ export default Ember.Controller.extend({
 		'state'
 	],
 	isManager: true,
-	username: "Aan Subarkah"
+	username: "Aan Subarkah",
+	page: 1,
+	limit: 1
 });

@@ -15,7 +15,12 @@ export default Ember.Controller.extend({
 	}.property('page', 'limit'),
 	lastRowNumber: function () {
 		var number = 0;
-		(this.limit * this.page) > this.total ? number = this.total : number = (this.limit * this.page);
+		if ((this.limit * this.page) > 0) {
+			number = this.total;
+		} else {
+			number = this.limit * this.page;
+		}
+
 		return number;
 	}.property('page', 'total', 'limit'),
 	actions: {}

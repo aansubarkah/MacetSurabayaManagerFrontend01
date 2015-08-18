@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('weathers-table', 'Integration | Component | weathers table', {
+moduleForComponent('weather-list', 'Integration | Component | weather list', {
   integration: true
 });
 
@@ -11,15 +11,15 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{weathers-table}}`);
+  this.render(hbs`{{weather-list}}`);
 
   assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`
-    {{#weathers-table}}
+    {{#weather-list}}
       template block text
-    {{/weathers-table}}
+    {{/weather-list}}
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');

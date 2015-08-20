@@ -1,0 +1,18 @@
+{{#if isShowingModal}}
+    {{#modal-dialog close="toggleAddModal"
+    alignment="center"
+    translucentOverlay=true
+    clickOutsideToClose=true
+    container-class="modal-dialog"}}
+        <div class="modal-header">
+            <h4 class="modal-title">Weather</h4>
+        </div>
+        <div class="modal-body">
+            {{weather.name}}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" {{action 'toggleAddModal'}}>Close
+            </button>
+        </div>
+    {{/modal-dialog}}
+{{/if}}

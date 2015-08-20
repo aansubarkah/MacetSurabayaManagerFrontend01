@@ -1,0 +1,22 @@
+<td>{{basic-math index "+" firstRowNumber}}</td>
+<td>
+    {{#if isEditing}}
+        {{focus-input
+        type='text'
+        class='form-control'
+        placeholder='Edit weather here, press enter to submit, blank means delete'
+        value=weather.name
+        enter='save'
+        focus-out='cancel'
+        }}
+    {{else}}
+        <span {{action 'edit' on='doubleClick'}}{{!--action 'view' on='click'--}}>{{weather.name}}</span>
+
+        <div class="pull-right">
+            {{#hold-button type="rectangle" action="remove"}}Hold to Delete{{/hold-button}}
+        </div>
+    {{/if}}
+</td>
+{{#weather-view weather=weather isShowingModal=isShowingModal toggleAddModal=(action "toggleAddModal")}}
+
+{{/weather-view}}

@@ -1,10 +1,12 @@
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Weathers</h3>
-
+        <h3 class="box-title">Weathers&nbsp;</h3>
+        <button type="button" class="btn btn-primary btn-xs" {{action 'toggleAdd'}}>
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
         <div class="box-tools">
             <div class="input-group">
-                {{input type="text" classNames="form-control" placeholder="Search" key-press="querySearchChanged" value=query}}
+                {{input type="text" classNames="form-control" placeholder="Search" value=query}}
                 <span class="input-group-addon"><i class="fa fa-search"></i></span>
             </div>
         </div>
@@ -14,18 +16,27 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Active</th>
+                <th width="20%">#</th>
+                <th width="80%">Name</th>
             </tr>
             </thead>
             <tbody>
-            {{#each model as |weather index|}}
+            {{#if isAddRowVisible}}
                 <tr>
-                    <td>{{basic-math index "+" firstRowNumber}}</td>
-                    <td>{{weather.name}}</td>
-                    <td>{{weather.active}}</td>
+                    <td>0</td>
+                    <td>{{focus-input
+                    type='text'
+                    class='form-control'
+                    placeholder='Insert new weather here, press enter to submit'
+                    value=newName
+                    enter='createNew'
+                    }}</td>
                 </tr>
+            {{/if}}
+            {{#each model as |weather index|}}
+                {{#weather-item viewDatum=(action "viewDatum") editDatum=(action "editDatum") deleteDatum=(action "deleteDatum") index=index weather=weather firstRowNumber=firstRowNumber}}
+
+                {{/weather-item}}
             {{/each}}
             </tbody>
         </table>

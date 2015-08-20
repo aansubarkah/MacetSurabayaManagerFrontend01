@@ -34,7 +34,7 @@
                 </tr>
             {{/if}}
             {{#each model as |weather index|}}
-                {{#weather-item viewDatum=(action "viewDatum") editDatum=(action "editDatum") deleteDatum=(action "deleteDatum") index=index weather=weather firstRowNumber=firstRowNumber}}
+                {{#weather-item editDatum=(action "editDatum") deleteDatum=(action "deleteDatum") index=index weather=weather firstRowNumber=firstRowNumber}}
 
                 {{/weather-item}}
             {{/each}}

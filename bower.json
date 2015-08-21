@@ -14,7 +14,11 @@
     "qunit": "~1.18.0",
     "antiscroll": "git://github.com/Addepar/antiscroll#e0d1538cf4f3fd61c5bedd6168df86d651f125da",
     "jquery-mousewheel": "~3.1.4",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "gmaps-for-apps": "~0.5.0",
+    "bootstrap": "~3.3.5",
+    "moment": "~2.10.6",
+    "admin-lte": "~2.3.0"
   },
   "devDependencies": {
     "bootstrap": "~3.3.5",

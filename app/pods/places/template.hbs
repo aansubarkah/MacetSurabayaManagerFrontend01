@@ -1,0 +1,12 @@
+{{#my-auto-complete
+options=places
+triggerSuggestions=triggerSuggestions
+action="refreshOptions"
+selectedValue=model.name
+placeHolderText="Find a thing"
+noMesssagePlaceHolderText="No things are found"
+selectItem="itemSelected" as |result|}}
+    <p>{{result.name}}</p>
+{{/my-auto-complete}}
+<p class="selection">{{selection}}</p>
+{{outlet}}

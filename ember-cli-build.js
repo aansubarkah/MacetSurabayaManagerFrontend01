@@ -60,5 +60,9 @@ module.exports = function (defaults) {
 
 	// Moment.js
 	app.import('bower_components/moment/min/moment-with-locales.min.js');
+
+	// Google Maps API
+	//app.import('vendor/gmaps.js');
+
 	return app.toTree();
 };

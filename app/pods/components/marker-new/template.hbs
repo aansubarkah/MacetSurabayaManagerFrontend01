@@ -1,0 +1,95 @@
+{{#if isShowingModal}}
+    {{#modal-dialog close="toggleAddModal"
+    alignment="center"
+    translucentOverlay=true
+    clickOutsideToClose=true
+    container-class="modal-dialog"}}
+        <div class="modal-header">
+            <h4 class="modal-title">New Marker</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group" style="min-height: 80px;">
+                {{#my-auto-complete
+                options=categories
+                triggerSuggestions=triggerSuggestions
+                action="refreshOptionsCategory"
+                selectedValue=category.name
+                placeHolderText="Category, blank mean 'Macet'"
+                noMesssagePlaceHolderText="No Data"
+                hideWhenNoSuggestions=true
+                selectItem="itemSelectedCategory" as |result|}}
+                    <p>{{result.name}}</p>
+                {{/my-auto-complete}}
+            </div>
+            <div class="form-group" style="min-height: 80px;">
+                {{#my-auto-complete
+                options=weathers
+                triggerSuggestions=triggerSuggestions
+                action="refreshOptionsWeather"
+                selectedValue=weather.name
+                placeHolderText="Weather, blank mean 'Cerah'"
+                noMesssagePlaceHolderText="No Data"
+                hideWhenNoSuggestions=true
+                selectItem="itemSelectedWeather" as |result|}}
+                    <p>{{result.name}}</p>
+                {{/my-auto-complete}}
+            </div>
+            <div class="form-group">
+                <label class="checkbox-inline">
+                    {{input
+                    type='checkbox'
+                    name='newPinned'
+                    checked=newPinned
+                    }}Pinned (check this for long term marker)
+                </label>
+            </div>
+            {{#if isShowingNewRespondent}}
+                <div class="form-group">
+                    {{input
+                    type='text'
+                    class='form-control'
+                    placeholder="Respondent's Name"
+                    value=newRespondentName
+                    }}
+                </div>
+                <div class="form-group">
+                    {{input
+                    type='text'
+                    class='form-control'
+                    placeholder="Respondent's Contact"
+                    value=newRespondentContact
+                    id='respondentContact'
+                    }}
+                </div>
+            {{else}}
+                <div class="form-group" style="min-height: 80px;">
+                    {{#my-auto-complete
+                    value=newRespondentName
+                    options=respondents
+                    triggerSuggestions=triggerSuggestions
+                    action="refreshOptionsRespondent"
+                    selectedValue=respondent.name
+                    placeHolderText="Respondent"
+                    noMesssagePlaceHolderText="No Data"
+                    hideWhenNoSuggestions=true
+                    selectItem="itemSelectedRespondent" as |result|}}
+                        <p>{{result.name}}</p>
+                    {{/my-auto-complete}}
+                </div>
+            {{/if}}
+            <div class="form-group">
+                {{textarea
+                class='form-control'
+                placeholder="More info here"
+                value=info
+                }}
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" {{action 'toggleAddModal'}}>Close
+            </button>
+            <button type="button" class="btn btn-info" {{action 'createNew'}}>Save
+            </button>
+        </div>
+    {{/modal-dialog}}
+{{/if}}

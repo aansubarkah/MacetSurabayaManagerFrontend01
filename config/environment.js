@@ -27,6 +27,11 @@ module.exports = function (environment) {
 			'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
 			'style-src': "'self' 'unsafe-inline' https://code.ionicframework.com https://maxcdn.bootstrapcdn.com https://cdn.datatables.net fonts.googleapis.com map.gstatic.com",
 			'media-src': "'self'"
+		},
+
+		googleMap:{
+			libraries:['places','geometry'],
+			apiKey: 'AIzaSyA7dciHJOSiR8annWOSISIdKFF6T3cuyMQ'
 		}
 	};
 

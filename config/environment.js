@@ -29,8 +29,8 @@ module.exports = function (environment) {
 			'media-src': "'self'"
 		},
 
-		googleMap:{
-			libraries:['places','geometry'],
+		googleMap: {
+			libraries: ['places', 'geometry'],
 			apiKey: 'AIzaSyA7dciHJOSiR8annWOSISIdKFF6T3cuyMQ'
 		}
 	};

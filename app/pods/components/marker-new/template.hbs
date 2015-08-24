@@ -6,6 +6,11 @@
     container-class="modal-dialog"}}
         <div class="modal-header">
             <h4 class="modal-title">New Marker</h4>
+            {{#if isAlert}}
+                <div class="alert alert-info" role="alert">
+                    {{alertMessages}}
+                </div>
+            {{/if}}
         </div>
         <div class="modal-body">
             <div class="form-group" style="min-height: 80px;">
@@ -82,6 +87,7 @@
                 class='form-control'
                 placeholder="More info here"
                 value=info
+                enter="createNew"
                 }}
             </div>
         </div>

@@ -5,6 +5,8 @@ export default Ember.Component.extend({
 		this._super(...arguments);
 		this.set('isShowingModal', false);
 		this.set('isShowingNewRespondent', false);
+		this.set('isAlert', false);
+		this.set('alertMessages', '');
 		this.set('triggerSuggestions', 1);
 		this.set('newRespondentName', '');
 		this.set('newRespondentContact', '');
@@ -20,26 +22,26 @@ export default Ember.Component.extend({
 		toggleAddModal(){
 			this.toggleProperty('isShowingModal');
 		},
+		toggleAlert(){
+			this.toggleProperty('isAlert');
+		},
 		refreshOptionsCategory(inputVal){
 			this.sendAction('refreshOptionsCategory', inputVal);
 		},
 		itemSelectedCategory(item){
-			if (item.get('id') == 0) {
-				return;
+			if (item.get('id') != 0) {
+				this.set('category_id', item.get('id'));
 			}
 			this.sendAction('itemSelectedCategory', item);
-			this.set('category_id', item.get('id'));
-
 		},
 		refreshOptionsWeather(inputVal){
 			this.sendAction('refreshOptionsWeather', inputVal);
 		},
 		itemSelectedWeather(item){
-			if (item.get('id') == 0) {
-				return;
+			if (item.get('id') != 0) {
+				this.set('weather_id', item.get('id'));
 			}
 			this.sendAction('itemSelectedWeather', item);
-			this.set('weather_id', item.get('id'));
 		},
 		refreshOptionsRespondent(inputVal){
 			//console.log(inputVal);
@@ -59,7 +61,16 @@ export default Ember.Component.extend({
 
 		},
 		createNew(){
+			//var errorMessages = [];
 			if (this.get('info') == '') {
+				this.set('isAlert', true);
+				this.set('alertMessages', 'Marker Info is blank!');
+				return;
+			}
+
+			if (this.get('respondent_id') == 0 && this.get('newRespondentContact') == '') {
+				this.set('isAlert', true);
+				this.set('alertMessages', 'Respondent is blank!');
 				return;
 			}
 
@@ -69,11 +80,11 @@ export default Ember.Component.extend({
 			}
 
 			var dataToSave = {
-				category_id: this.get('category_id'),
-				respondent_id: this.get('respondent_id'),
+				category_id: parseInt(this.get('category_id')),
+				respondent_id: parseInt(this.get('respondent_id')),
 				repondentName: this.get('newRespondentName'),
 				repondentContact: this.get('newRespondentContact'),
-				weather_id: this.get('weather_id'),
+				weather_id: parseInt(this.get('weather_id')),
 				lat: this.get('newLat'),
 				lng: this.get('newLng'),
 				info: this.get('info'),

@@ -4,12 +4,13 @@ var Weather = Ember.Object.extend({id: '', name: ''});
 var Respondent = Ember.Object.extend({id: '', name: ''});
 
 export default Ember.Controller.extend({
+	//queryParams: ['page', 'limit', 'query', 'lastminutes'],
+	queryParams: ['lastminutes'],
 	lat: -7.290293,
 	lng: 112.727226,
 	newLat: 0,
 	newLng: 0,
 	zoom: 16,
-	markersForDisplay: Ember.A([]),
 	isShowingModal: false,
 	triggerSuggestions: 1,
 	actions: {
@@ -36,29 +37,6 @@ export default Ember.Controller.extend({
 					that.set('newLng', f.latLng.F);
 				}
 			});
-			/*this.set('newMarker', Ember.A([
-			 {
-			 id: 0,
-			 lat: e.latLng.A,
-			 lng: e.latLng.F,
-			 title: 'New Marker',
-			 draggable: true,
-			 infoWindow: {
-			 content: 'Click or move the marker to display new marker form.',
-			 visible: true
-			 },
-			 click: function () {
-			 that.toggleProperty('isShowingModal');
-			 that.set('newLat', e.latLng.A);
-			 that.set('newLng', e.latLng.F);
-			 },
-			 dragend: function (f) {
-			 that.toggleProperty('isShowingModal');
-			 that.set('newLat', f.latLng.A);
-			 that.set('newLng', f.latLng.F);
-			 }
-			 }
-			 ]));*/
 		},
 		itemSelectedCategory: function (item) {
 			console.log(item.get('id'));
@@ -127,7 +105,19 @@ export default Ember.Controller.extend({
 			});
 		},
 		createNew(dataToSave){
-			console.log(dataToSave);
+			const store = this.get('store');
+			var that = this;
+
+			var marker = store.createRecord('marker', dataToSave);
+
+			// @todo clear text field
+			this.set('isShowingModal', false);
+
+			marker.save().then(function () {
+				// @warn refresh template
+				//that.get('target.router').refresh();
+				that.transitionToRoute('markers');
+			});
 		}
 	}
 });

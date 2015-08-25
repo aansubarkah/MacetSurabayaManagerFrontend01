@@ -29,7 +29,7 @@ export default Ember.Component.extend({
 			this.sendAction('refreshOptionsCategory', inputVal);
 		},
 		itemSelectedCategory(item){
-			if (item.get('id') != 0) {
+			if (item.get('id') !== '0') {
 				this.set('category_id', item.get('id'));
 			}
 			this.sendAction('itemSelectedCategory', item);
@@ -38,7 +38,7 @@ export default Ember.Component.extend({
 			this.sendAction('refreshOptionsWeather', inputVal);
 		},
 		itemSelectedWeather(item){
-			if (item.get('id') != 0) {
+			if (item.get('id') !== '0') {
 				this.set('weather_id', item.get('id'));
 			}
 			this.sendAction('itemSelectedWeather', item);
@@ -50,7 +50,7 @@ export default Ember.Component.extend({
 		},
 		itemSelectedRespondent(item){
 			//console.log(item.length);
-			if (item.get('id') == 0) {
+			if (item.get('id') === '0') {
 				this.set('respondent_id', 0);
 				this.toggleProperty('isShowingNewRespondent');
 				this.$('#respondentContact').focus();
@@ -62,13 +62,13 @@ export default Ember.Component.extend({
 		},
 		createNew(){
 			//var errorMessages = [];
-			if (this.get('info') == '') {
+			if (this.get('info') === '') {
 				this.set('isAlert', true);
 				this.set('alertMessages', 'Marker Info is blank!');
 				return;
 			}
 
-			if (this.get('respondent_id') == 0 && this.get('newRespondentContact') == '') {
+			if (this.get('respondent_id') === '0' && this.get('newRespondentContact') === '') {
 				this.set('isAlert', true);
 				this.set('alertMessages', 'Respondent is blank!');
 				return;

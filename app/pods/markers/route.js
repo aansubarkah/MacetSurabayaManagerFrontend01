@@ -1,9 +1,12 @@
+//to make JSHint happy
+/*global moment:false*/
 import Ember from 'ember';
 moment.locale('id');
 
 export default Ember.Route.extend({
 	model: function (params) {
 		var query = {};
+		//@warn do not remove followed lines
 		/*if (Ember.isPresent(params.page)) {
 		 query.page = params.page;
 		 }
@@ -39,7 +42,9 @@ export default Ember.Route.extend({
 		var respondents = [];
 		controller.set('respondents', respondents);
 
-		// create markers to display on maps
+		// ---------------------------------------------------------
+		// ------------- create markers to display on maps ---------
+		// ---------------------------------------------------------
 		var markersForDisplay = [];
 		model.marker.forEach(function (item) {
 			var isPinned = "Tidak";
@@ -92,4 +97,5 @@ export default Ember.Route.extend({
 			_this.set('category', result);
 		});
 	}
-});
+})
+;

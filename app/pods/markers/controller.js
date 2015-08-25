@@ -5,7 +5,22 @@ var Respondent = Ember.Object.extend({id: '', name: ''});
 
 export default Ember.Controller.extend({
 	//queryParams: ['page', 'limit', 'query', 'lastminutes'],
+	geolocation: Ember.inject.service(),
+	userLocation: null,
+	init: function () {
+		var that = this;
+		this.get('geolocation').getLocation().then(function (geoObject) {
+			var currentLocation = that.get('geolocation').get('currentLocation');
+			that.set('userLocation', currentLocation);
+
+			// if user share her location, relocate lat and lng, otherwise it will use defaul
+			// value which is suarasurabaya office
+			that.set('lat', currentLocation[0]);
+			that.set('lng', currentLocation[1]);
+		});
+	},
 	queryParams: ['lastminutes'],
+	//userLocation: null,
 	lat: -7.290293,
 	lng: 112.727226,
 	newLat: 0,
@@ -115,9 +130,13 @@ export default Ember.Controller.extend({
 
 			marker.save().then(function () {
 				// @warn refresh template
-				//that.get('target.router').refresh();
-				that.transitionToRoute('markers');
+				that.get('target.router').refresh();
+				//that.transitionToRoute('markers');
 			});
+		},
+		refreshPlace(lat, lng){
+			this.set('lat', lat);
+			this.set('lng', lng);
 		}
 	}
 });

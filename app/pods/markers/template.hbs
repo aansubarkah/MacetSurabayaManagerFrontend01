@@ -4,11 +4,22 @@
     }
 </style>
 <div class="box">
-    <div class="box-header"><h3 class="box-title">Traffic Map&nbsp;</h3></div>
+    <div class="box-header">
+        <h3 class="box-title">Traffic Map&nbsp;</h3>
+
+        <div class="box-tools">
+            <div class="input-group">
+                {{#gmap-search refreshPlace='refreshPlace'}}{{/gmap-search}}
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            </div>
+        </div>
+
+    </div>
     <div class="box-body">
         {{g-maps name="my-map" lat=lat lng=lng zoom=zoom click="clickAction" markers=markersForDisplay}}
         {{!--google-map latitude="-7.290293" longitude="112.727226"--}}
         {{!--google-maps-markup map=map--}}
+        {{!--userLocation--}}
     </div>
 </div>
 {{#marker-new

@@ -61,6 +61,9 @@ module.exports = function (defaults) {
 	// Moment.js
 	app.import('bower_components/moment/min/moment-with-locales.min.js');
 
+	// Hashids
+	app.import('bower_components/hashids/lib/hashids.min.js');
+
 	// Google Maps API
 	//app.import('vendor/gmaps.js');
 

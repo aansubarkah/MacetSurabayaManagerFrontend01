@@ -1,4 +1,8 @@
+//to make JSHint happy
+/*global moment:false*/
+/*global Hashids:false*/
 import Ember from 'ember';
+//var hashids = new Hashids("m4c3tsur4b4y4");
 var Category = Ember.Object.extend({id: '', name: ''});
 var Weather = Ember.Object.extend({id: '', name: ''});
 var Respondent = Ember.Object.extend({id: '', name: ''});
@@ -7,9 +11,10 @@ export default Ember.Controller.extend({
 	//queryParams: ['page', 'limit', 'query', 'lastminutes'],
 	geolocation: Ember.inject.service(),
 	userLocation: null,
+	//markersForDisplay: [],
 	init: function () {
 		var that = this;
-		this.get('geolocation').getLocation().then(function (geoObject) {
+		this.get('geolocation').getLocation().then(function () {
 			var currentLocation = that.get('geolocation').get('currentLocation');
 			that.set('userLocation', currentLocation);
 
@@ -31,6 +36,16 @@ export default Ember.Controller.extend({
 	actions: {
 		clickAction: function (e) {
 			var that = this;
+			/*that.routesForDisplay.addObject({
+			 id: hashids.encode(new Date().getTime()),
+			 origin: [-7.291820, 112.722176],
+			 destination: [-7.372673, 112.729149],
+			 travelMode: 'driving',
+			 strokeColor: '#3333FF',
+			 strokeOpacity: 0.6,
+			 strokeWeight: 6,
+			 region: 'id'
+			 });*///don't remove above line, for educational purpose
 			that.markersForDisplay.addObject({
 				id: 0,
 				lat: e.latLng.A,
@@ -96,7 +111,7 @@ export default Ember.Controller.extend({
 			});
 		},
 		itemSelectedRespondent: function (item) {
-			console.log(item.get('id'));
+			//console.log(item.get('id'));
 			this.set('respondent', item);
 		},
 		refreshOptionsRespondent: function (inputVal) {
@@ -108,10 +123,11 @@ export default Ember.Controller.extend({
 				limit: 3
 			}).then(function (respondents) {
 				respondents.forEach(function (item) {
-					var full = item.get('name');
+					//var full = item.get('name');
 					respondentList.pushObject(Respondent.create({
 						id: item.get('id'),
-						name: full
+						name: item.get('name'),
+						contact: item.get('contact')
 					}));
 				});
 				self.set('respondents', respondentList);

@@ -35,12 +35,33 @@ module.exports = function (environment) {
 		}
 	};
 
+	/*ENV['simple-auth'] = {
+		authorizer: 'simple-auth-authorizer:token',
+		crossOriginWhitelist: ['http://localhost:8765'],// @todo change this on production server
+		store: 'simple-auth-session-store:local-storage'
+	};
+
+	ENV['simple-auth-token'] = {
+		serverTokenEndpoint: 'http://localhost:8765/manager/users/token',// @todo change this on production server
+		identificationField: 'username',
+		passwordField: 'password',
+		tokenPropertyName: 'token',
+		authorizationPrefix: 'Bearer ',
+		authorizationHeaderName: 'Authorization',
+		header: {},
+		refreshAccessTokens: true,
+		serverTokenRefreshEndpoint: 'http://localhost:8765/manager/users/token',// @todo change this on production server
+		tokenExpireName: 'exp',
+		refreshLeeway: 0, // Refresh the token 5 minutes (300s) before it expires.
+		timeFactor: 1000
+	};*/
+
 	if (environment === 'development') {
 		//ENV.APP.LOG_RESOLVER = true;
-		// ENV.APP.LOG_ACTIVE_GENERATION = true;
+		//ENV.APP.LOG_ACTIVE_GENERATION = true;
 		ENV.APP.LOG_TRANSITIONS = true;
 		//ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-		// ENV.APP.LOG_VIEW_LOOKUPS = true;
+		//ENV.APP.LOG_VIEW_LOOKUPS = true;
 	}
 
 	if (environment === 'test') {

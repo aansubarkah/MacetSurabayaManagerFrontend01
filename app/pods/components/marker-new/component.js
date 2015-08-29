@@ -61,7 +61,6 @@ export default Ember.Component.extend({
 
 		},
 		createNew(){
-			//var errorMessages = [];
 			if (this.get('info') === '') {
 				this.set('isAlert', true);
 				this.set('alertMessages', 'Marker Info is blank!');
@@ -90,7 +89,11 @@ export default Ember.Component.extend({
 				info: this.get('info'),
 				pinned: pinned
 			};
-			//console.log(dataToSend);
+
+			this.set('newRespondentName', '');
+			this.set('newRespondentContact', '');
+			this.set('info', '');
+
 			this.sendAction('createNew', dataToSave);
 		}
 		//@todo if respondent doesn't exist, display contact and respondent's name input

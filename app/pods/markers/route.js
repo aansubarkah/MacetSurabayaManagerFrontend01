@@ -1,7 +1,9 @@
 //to make JSHint happy
 /*global moment:false*/
+/*global Hashids:false*/
 import Ember from 'ember';
 moment.locale('id');
+var hashids = new Hashids("m4c3tsur4b4y4");
 
 export default Ember.Route.extend({
 	model: function (params) {
@@ -59,13 +61,14 @@ export default Ember.Route.extend({
 			}
 
 			var result = {
-				id: item.get('id'),
+				id: hashids.encode(item.get('id')),
 				lat: item.get('lat'),
 				lng: item.get('lng'),
 				title: item.get('category.name'),
 				icon: 'images/dark/' + item.get('category.id') + '.png',
 				infoWindow: {
 					content: "<p><strong>Waktu:&nbsp;</strong>" + moment(item.get('created')).fromNow() + "</p>" +
+					"<p>(" + moment(item.get('created')).format('dddd, Do MMMM YYYY, h:mm:ss A') + ")</p>" +
 					"<p><strong>Keterangan:&nbsp;</strong>" +
 					item.get('info') + "</p><p><strong>Cuaca:&nbsp</strong>" + item.get('weather.name') + "</p>" +
 					"<p><strong>Permanen:&nbsp;</strong>" + isPinned + "</p><p><strong>Selesai:&nbsp;</strong>" +
@@ -76,6 +79,19 @@ export default Ember.Route.extend({
 			markersForDisplay.push(result);
 		});
 		controller.set('markersForDisplay', markersForDisplay);
+
+		var routesForDisplay = [];
+		/*var routesForDisplay = [{
+		 id: hashids.encode(new Date().getTime()),
+		 origin: [-7.291820, 112.722176],
+		 destination: [-7.372673, 112.729149],
+		 travelMode: 'driving',
+		 strokeColor: '#3333FF',
+		 strokeOpacity: 0.6,
+		 strokeWeight: 6
+		 }];*/
+		controller.set('routesForDisplay', routesForDisplay);
+
 	},
 	queryParams: {
 		/*page: {

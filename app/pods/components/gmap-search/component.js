@@ -1,3 +1,6 @@
+//to make JSHint happy
+/*global google:false*/
+
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -8,6 +11,7 @@ export default Ember.Component.extend({
 	},
 	didInsertElement: function () {
 		var that = this;
+		//this.value = 'halo dunia';
 		var options = {
 			types: ['geocode'],
 			componentRestrictions: {country: 'id'}
@@ -24,6 +28,7 @@ export default Ember.Component.extend({
 			var lng = place.geometry.location.F;
 			console.info('Latitude: ' + place.geometry.location.A + " Longitude:" + place.geometry.location.F);
 			that.sendAction('refreshPlace', lat, lng);
+			//that.$().val();
 		});
 	}
 });

@@ -11,5 +11,19 @@ export default Ember.Controller.extend({
 	isManager: true,
 	username: "Aan Subarkah",
 	page: 1,
-	limit: 1
+	limit: 1,
+	actions: {
+		/*invalidateSession: function () {
+			this.get('session').invalidate();
+			this.transitionToRoute('/');
+		}*/
+	}
 });
+/*
+ * actions: {
+ invalidateSession: function () {
+ this.get('session').invalidate();
+ this.transitionToRoute('/');
+ }
+ }
+ * */

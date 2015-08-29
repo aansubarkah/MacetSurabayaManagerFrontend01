@@ -13,7 +13,7 @@ export default DS.RESTAdapter.extend({
 		return false;
 	},
 	namespace: 'manager',
-	host: 'http://localhost:8765',
+	host: 'http://localhost:8765',// @todo change this on production server
 	ajax: function (url, method, hash) {
 		//"Accept": "application/json",
 		//"Content-Type": "application/json"

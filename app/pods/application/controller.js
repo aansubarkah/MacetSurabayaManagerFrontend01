@@ -13,10 +13,13 @@ export default Ember.Controller.extend({
 	page: 1,
 	limit: 1,
 	actions: {
+		doRefresh: function () {
+			this.get('target.router').refresh();
+		}
 		/*invalidateSession: function () {
-			this.get('session').invalidate();
-			this.transitionToRoute('/');
-		}*/
+		 this.get('session').invalidate();
+		 this.transitionToRoute('/');
+		 }*/
 	}
 });
 /*

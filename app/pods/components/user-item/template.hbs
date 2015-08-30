@@ -1,0 +1,50 @@
+<td>{{basic-math index "+" firstRowNumber}}</td>
+<td>
+    {{#if isEditing}}
+        {{focus-input
+        type='text'
+        class='form-control'
+        placeholder='Edit user here, press enter to submit, blank means delete'
+        value=user.username
+        enter='save'
+        focus-out='cancel'
+        }}
+    {{else}}
+        <span {{action 'edit' on='doubleClick'}}{{!--action 'view' on='click'--}}>{{user.username}}</span>
+    {{/if}}
+</td>
+<td>
+    {{#if isEditing}}
+        {{focus-input
+        type='text'
+        class='form-control'
+        placeholder='Edit user here, press enter to submit, blank means delete'
+        value=user.email
+        enter='save'
+        focus-out='cancel'
+        }}
+    {{else}}
+        <span {{action 'edit' on='doubleClick'}}>{{user.email}}</span>
+    {{/if}}
+</td>
+<td>
+    {{#if isEditing}}
+        {{focus-input
+        type='text'
+        class='form-control'
+        placeholder='Edit user here, press enter to submit, blank means delete'
+        value=group.name
+        enter='save'
+        focus-out='cancel'
+        }}
+    {{else}}
+        <span {{action 'edit' on='doubleClick'}}>{{group.name}}</span>
+
+        <div class="pull-right">
+            {{#hold-button type="rectangle" action="remove"}}Hold to Delete{{/hold-button}}
+        </div>
+    {{/if}}
+</td>
+{{#user-view user=user isShowingModal=isShowingModal toggleAddModal=(action "toggleAddModal")}}
+
+{{/user-view}}

@@ -1,0 +1,76 @@
+<style>
+    /* following line is for autocomplete list */
+    .message {
+        z-index: 999;
+        background-color: #ffffff;
+    }
+
+    .tt-suggestion {
+        z-index: 999;
+        background-color: #ffffff;
+    }
+
+    .tt-suggestion .tt-cursor {
+        z-index: 999;
+        background-color: #3C8DBC;
+    }
+</style>
+{{#if isShowingModal}}
+    {{#modal-dialog close="toggleAddModal"
+    alignment="center"
+    translucentOverlay=true
+    clickOutsideToClose=true
+    container-class="modal-dialog"}}
+        <div class="modal-header">
+            <h4 class="modal-title">New User</h4>
+            {{#if isAlert}}
+                <div class="alert alert-info" role="alert">
+                    {{alertMessages}}
+                </div>
+            {{/if}}
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                {{#my-auto-complete
+                options=groups
+                triggerSuggestions=triggerSuggestions
+                action="refreshOptionsGroup"
+                selectedValue=group.name
+                placeHolderText="Group, blank mean 'Administrator'"
+                noMesssagePlaceHolderText="No Data"
+                hideWhenNoSuggestions=true
+                selectItem="itemSelectedGroup" as |result|}}
+                    <p>{{result.name}}</p>
+                {{/my-auto-complete}}
+            </div>
+            <div class="form-group">
+                {{input
+                class='form-control'
+                placeholder="Username"
+                value=username
+                }}
+            </div>
+            <div class="form-group">
+                {{input
+                class='form-control'
+                placeholder="Email"
+                value=email
+                }}
+            </div>
+            <div class="form-group">
+                {{input
+                type='password'
+                class='form-control'
+                placeholder="Password"
+                value=password
+                }}
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" {{action 'toggleAddModal'}}>Close
+            </button>
+            <button type="button" class="btn btn-info" {{action 'createNew'}}>Save
+            </button>
+        </div>
+    {{/modal-dialog}}
+{{/if}}

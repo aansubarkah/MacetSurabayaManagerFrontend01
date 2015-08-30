@@ -17,12 +17,9 @@
     </div>
     <div class="box-body">
         {{g-maps name="my-map" lat=lat lng=lng zoom=zoom click="clickAction" routes=routesForDisplay markers=markersForDisplay}}
-        {{!--google-map latitude="-7.290293" longitude="112.727226"--}}
-        {{!--google-maps-markup map=map--}}
-        {{!--userLocation--}}
     </div>
 </div>
-{{#marker-new
+{{marker-new
 isShowingModal=isShowingModal
 newLat=newLat
 newLng=newLng
@@ -41,4 +38,3 @@ refreshOptionsRespondent="refreshOptionsRespondent"
 itemSelectedRespondent="itemSelectedRespondent"
 createNew="createNew"
 }}
-{{/marker-new}}

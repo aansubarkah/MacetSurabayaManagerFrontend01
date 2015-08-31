@@ -1,10 +1,13 @@
 import Ember from 'ember';
 var Place = Ember.Object.extend({id: '', name: ''});
+var Category = Ember.Object.extend({id: '', name: ''});
+var Weather = Ember.Object.extend({id: '', name: ''});
+var Respondent = Ember.Object.extend({id: '', name: ''});
 
 export default Ember.Controller.extend({
 	queryParams: ['page', 'limit', 'query'],
 	page: 1,
-	limit: 10,
+	limit: 5,
 	query: '',
 	total: null,
 	totalPages: function () {
@@ -29,8 +32,13 @@ export default Ember.Controller.extend({
 	lng: 112.727226,
 	newLat: 0,
 	newLng: 0,
+	newPlaceLat: 0,
+	newPlaceLng: 0,
+	newPlaceName: '',
 	zoom: 16,
 	isAddRowVisible: false,
+	isShowingModal: false,
+	triggerSuggestions: 1,
 	init: function () {
 		var that = this;
 		this.get('geolocation').getLocation().then(function () {
@@ -47,6 +55,7 @@ export default Ember.Controller.extend({
 		toggleAdd: function () {
 			this.toggleProperty('isAddRowVisible');
 		},
+		// when map is clicked, add marker
 		clickAction: function (e) {
 			var that = this;
 			that.markersForDisplay.addObject({
@@ -61,36 +70,124 @@ export default Ember.Controller.extend({
 				},
 				click: function () {
 					that.toggleProperty('isAddRowVisible');
-					that.set('newLat', e.latLng.A);
-					that.set('newLng', e.latLng.F);
+					that.set('newPlaceLat', e.latLng.A);
+					that.set('newPlaceLng', e.latLng.F);
 				},
 				dragend: function (f) {
 					that.toggleProperty('isAddRowVisible');
-					that.set('newLat', f.latLng.A);
-					that.set('newLng', f.latLng.F);
+					that.set('newPlaceLat', f.latLng.A);
+					that.set('newPlaceLng', f.latLng.F);
 				}
 			});
 		},
-		createNew: function () {
+		itemSelectedCategory: function (item) {
+			console.log(item.get('id'));
+			this.set('category', item);
+		},
+		refreshOptionsCategory: function (inputVal) {
+			var categoryList = [];
+			var self = this;
+			var triggerSuggestions = this.get('triggerSuggestions');
+			var categories = this.store.query('category', {searchName: inputVal, limit: 3}).then(function (categories) {
+				categories.forEach(function (item) {
+					var full = item.get('name');
+					categoryList.pushObject(Category.create({
+						id: item.get('id'),
+						name: full
+					}));
+				});
+				self.set('categories', categoryList);
+				triggerSuggestions = triggerSuggestions + 1;
+				self.set('triggerSuggestions', triggerSuggestions);
+			});
+		},
+		itemSelectedWeather: function (item) {
+			this.set('weather', item);
+		},
+		refreshOptionsWeather: function (inputVal) {
+			var weatherList = [];
+			var self = this;
+			var triggerSuggestions = this.get('triggerSuggestions');
+			var weathers = this.store.query('weather', {searchName: inputVal, limit: 3}).then(function (weathers) {
+				weathers.forEach(function (item) {
+					var full = item.get('name');
+					weatherList.pushObject(Weather.create({
+						id: item.get('id'),
+						name: full
+					}));
+				});
+				self.set('weathers', weatherList);
+				triggerSuggestions = triggerSuggestions + 1;
+				self.set('triggerSuggestions', triggerSuggestions);
+			});
+		},
+		itemSelectedRespondent: function (item) {
+			//console.log(item.get('id'));
+			this.set('respondent', item);
+		},
+		refreshOptionsRespondent: function (inputVal) {
+			var respondentList = [];
+			var self = this;
+			var triggerSuggestions = this.get('triggerSuggestions');
+			var respondents = this.store.query('respondent', {
+				searchName: inputVal,
+				limit: 3
+			}).then(function (respondents) {
+				respondents.forEach(function (item) {
+					//var full = item.get('name');
+					respondentList.pushObject(Respondent.create({
+						id: item.get('id'),
+						name: item.get('name'),
+						contact: item.get('contact')
+					}));
+				});
+				self.set('respondents', respondentList);
+				triggerSuggestions = triggerSuggestions + 1;
+				self.set('triggerSuggestions', triggerSuggestions);
+			});
+		},
+		toggleCreateNewMarker: function (place) {
+			//console.log(place);
+			this.toggleProperty('isShowingModal');
+			this.set('newLat', place.get('lat'));
+			this.set('newLng', place.get('lng'));
+		},
+		// create new marker
+		createNew: function (dataToSave) {
+			const store = this.get('store');
+			var that = this;
+
+			var marker = store.createRecord('marker', dataToSave);
+
+			// @todo clear text field
+			this.set('isShowingModal', false);
+
+			marker.save().then(function () {
+				// @warn refresh template
+				//that.get('target.router').refresh();
+				that.transitionToRoute('markers');
+			});
+		},
+		createNewPlace: function () {
 			const store = this.get('store');
 			var that = this;
 
 			// get name inputed, if blank return to input
-			var name = this.get('newName');
+			var name = this.get('newPlaceName');
 			if (name && !name.trim()) {
-				this.set('newName', '');
+				this.set('newPlaceName', '');
 				return;
 			}
 
 			// create the new Weather model
 			var place = store.createRecord('place', {
 				name: name,
-				lat: this.get('newLat'),
-				lng: this.get('newLng')
+				lat: this.get('newPlaceLat'),
+				lng: this.get('newPlaceLng')
 			});
 
 			// clear the "New Weather" text field
-			this.set('newName', '');
+			this.set('newPlaceName', '');
 			this.set('isAddRowVisible', false);
 
 			place.save().then(function () {
@@ -135,6 +232,5 @@ export default Ember.Controller.extend({
 				self.set('triggerSuggestions', triggerSuggestions);
 			});
 		}
-	},
-	triggerSuggestions: 1
+	}
 });

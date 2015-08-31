@@ -30,6 +30,10 @@ export default Ember.Component.extend({
 			}
 
 		},
+		toggleCreateNewMarker(){
+			var place = this.get('place');
+			this.sendAction('toggleCreateNewMarker', place);
+		},
 		cancel(){
 			this.set('isEditing', false);
 		},

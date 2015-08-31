@@ -16,7 +16,8 @@ export default Ember.Route.extend({
 		//return this.store.query('user', query);
 		return Ember.RSVP.hash({
 			user: this.store.query('user', query),
-			group: this.store.query('group', query)
+			//group: this.store.query('group', query)
+			group: this.store.findAll('group')
 		});
 	},
 	setupController: function (controller, model) {

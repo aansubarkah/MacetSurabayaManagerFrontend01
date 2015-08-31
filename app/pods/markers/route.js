@@ -24,9 +24,12 @@ export default Ember.Route.extend({
 
 		return Ember.RSVP.hash({
 			marker: this.store.query('marker', query),
-			category: this.store.query('category', query),
+			category: this.store.findAll('category'),
+			weather: this.store.findAll('weather'),
+			respondent: this.store.findAll('respondent')
+			/*category: this.store.query('category', query),
 			weather: this.store.query('weather', query),
-			respondent: this.store.query('respondent', query)
+			respondent: this.store.query('respondent', query)*/
 		});
 
 	},

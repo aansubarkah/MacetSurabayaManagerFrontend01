@@ -81,8 +81,8 @@ export default Ember.Component.extend({
 			var dataToSave = {
 				category_id: parseInt(this.get('category_id')),
 				respondent_id: parseInt(this.get('respondent_id')),
-				repondentName: this.get('newRespondentName'),
-				repondentContact: this.get('newRespondentContact'),
+				respondentName: this.get('newRespondentName'),
+				respondentContact: this.get('newRespondentContact'),
 				weather_id: parseInt(this.get('weather_id')),
 				lat: this.get('newLat'),
 				lng: this.get('newLng'),

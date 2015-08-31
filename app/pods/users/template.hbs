@@ -35,7 +35,17 @@
                 </tr>
             {{/if}}
             {{#each user as |user index|}}
-                {{user-item editDatum='editDatum' deleteDatum='deleteDatum' index=index user=user group=user.group firstRowNumber=firstRowNumber}}
+                {{user-item
+                editDatum='editDatum'
+                deleteDatum='deleteDatum'
+                index=index
+                user=user
+                group=group
+                firstRowNumber=firstRowNumber
+                triggerSuggestions=triggerSuggestions
+                groups=groups
+                refreshOptionsGroup="refreshOptionsGroup"
+                itemSelectedGroup="itemSelectedGroup"}}
             {{/each}}
             </tbody>
         </table>

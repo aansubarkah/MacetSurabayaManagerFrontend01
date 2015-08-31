@@ -61,7 +61,6 @@ export default Ember.Controller.extend({
 			this.transitionToRoute('users');
 		},
 		itemSelectedGroup: function (item) {
-			console.log(item.get('id'));
 			this.set('group', item);
 		},
 		refreshOptionsGroup: function (inputVal) {

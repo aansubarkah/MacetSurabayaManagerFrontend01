@@ -6,6 +6,7 @@ export default Ember.Component.extend({
 		this._super(...arguments);
 		this.set('isEditing', false);
 		this.set('isShowingModal', false);
+		this.set('triggerSuggestions', 1);
 	},
 
 	actions: {
@@ -13,8 +14,19 @@ export default Ember.Component.extend({
 			var user = this.get('user');
 			this.sendAction('deleteDatum', user);
 		},
-		edit(){
-			this.set('isEditing', true);
+		edit(dataToSave){
+			//this.set('isEditing', true);
+			this.sendAction('editDatum', dataToSave);
+
+		},
+		refreshOptionsGroup(inputVal){
+			this.sendAction('refreshOptionsGroup', inputVal);
+		},
+		itemSelectedGroup(item){
+			if (item.get('id') !== '0') {
+				this.set('group_id', item.get('id'));
+			}
+			this.sendAction('itemSelectedGroup', item);
 		},
 		view(){
 			this.set('isShowingModal', true);

@@ -90,7 +90,6 @@ export default Ember.Controller.extend({
 			});
 		},
 		itemSelectedWeather: function (item) {
-			console.log(item.get('id'));
 			this.set('weather', item);
 		},
 		refreshOptionsWeather: function (inputVal) {

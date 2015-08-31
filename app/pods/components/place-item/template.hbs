@@ -1,0 +1,18 @@
+<td>
+    {{#if isEditing}}
+        {{focus-input
+        type='text'
+        class='form-control'
+        placeholder='Edit place here, press enter to submit, blank means delete'
+        value=place.name
+        enter='save'
+        focus-out='cancel'
+        }}
+    {{else}}
+        <span {{action 'edit' on='doubleClick'}}{{action 'refreshPlace' on='click'}}>{{place.name}}</span>
+
+        <div class="pull-right">
+            {{#hold-button type="rectangle" action="remove"}}Hold to Delete{{/hold-button}}
+        </div>
+    {{/if}}
+</td>

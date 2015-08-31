@@ -1,12 +1,57 @@
-{{#my-auto-complete
-options=places
-triggerSuggestions=triggerSuggestions
-action="refreshOptions"
-selectedValue=model.name
-placeHolderText="Find a thing"
-noMesssagePlaceHolderText="No things are found"
-selectItem="itemSelected" as |result|}}
-    <p>{{result.name}}</p>
-{{/my-auto-complete}}
-<p class="selection">{{selection}}</p>
-{{outlet}}
+<style>
+    .ember-cli-g-map {
+        height: 450px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-8">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Place</h3>
+
+                <div class="box-tools">
+                    <div class="input-group">
+                        {{gmap-search refreshPlace='refreshPlace' elementId='searchPlaceText'}}
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                {{g-maps name="my-map" lat=lat lng=lng zoom=zoom click="clickAction" markers=markersForDisplay}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-tools">
+                    <div class="input-group">
+                        {{input type="text" classNames="form-control" placeholder="Search" value=query}}
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each place as |place index|}}
+                        {{place-item editDatum='editDatum' deleteDatum='deleteDatum' place=place refreshPlace='refreshPlace'}}
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <p class="pull-left">Displaying row {{firstRowNumber}} to {{lastRowNumber}} from {{total}} rows</p>
+
+                <div class="box-tools">
+                    {{pagination-pager count=totalPages current=page}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

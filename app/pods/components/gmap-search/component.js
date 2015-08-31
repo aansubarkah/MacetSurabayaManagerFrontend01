@@ -6,12 +6,13 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	tagName: 'input',
 	classNames: ['form-control'],
+	attributeBindings: ['placeholder'],
+	placeholder: 'Jump to a location',
 	init() {
 		this._super(...arguments);
 	},
 	didInsertElement: function () {
 		var that = this;
-		//this.value = 'halo dunia';
 		var options = {
 			types: ['geocode'],
 			componentRestrictions: {country: 'id'}
@@ -26,7 +27,7 @@ export default Ember.Component.extend({
 
 			var lat = place.geometry.location.A;
 			var lng = place.geometry.location.F;
-			console.info('Latitude: ' + place.geometry.location.A + " Longitude:" + place.geometry.location.F);
+			//console.info('Latitude: ' + place.geometry.location.A + " Longitude:" + place.geometry.location.F);
 			that.sendAction('refreshPlace', lat, lng);
 			//that.$().val();
 		});

@@ -1,1 +1,32 @@
-{{yield}}
+{{#if isShowingModal}}
+    {{#modal-dialog close="toggleAddModal"
+    alignment="center"
+    translucentOverlay=true
+    clickOutsideToClose=true
+    container-class="modal-dialog"}}
+        <div class="modal-header">
+            <h4 class="modal-title">New Marker</h4>
+            {{#if isAlert}}
+                <div class="alert alert-info" role="alert">
+                    {{alertMessages}}
+                </div>
+            {{/if}}
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                {{textarea
+                class='form-control'
+                placeholder="More info here"
+                value=name
+                enter="createNew"
+                }}
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" {{action 'toggleAddModal'}}>Close
+            </button>
+            <button type="button" class="btn btn-info" {{action 'createNew'}}>Save
+            </button>
+        </div>
+    {{/modal-dialog}}
+{{/if}}

@@ -39,6 +39,17 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {{#if isAddRowVisible}}
+                        <tr>
+                            <td>{{focus-input
+                            type='text'
+                            class='form-control'
+                            placeholder='Insert new weather here, press enter to submit'
+                            value=newName
+                            enter='createNew'
+                            }}</td>
+                        </tr>
+                    {{/if}}
                     {{#each place as |place index|}}
                         {{place-item editDatum='editDatum' deleteDatum='deleteDatum' place=place refreshPlace='refreshPlace'}}
                     {{/each}}

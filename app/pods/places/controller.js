@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
 	newLat: 0,
 	newLng: 0,
 	zoom: 16,
-	//markersForDisplay: [],
+	isAddRowVisible: false,
 	init: function () {
 		var that = this;
 		this.get('geolocation').getLocation().then(function () {
@@ -44,51 +44,81 @@ export default Ember.Controller.extend({
 		});
 	},
 	actions: {
+		toggleAdd: function () {
+			this.toggleProperty('isAddRowVisible');
+		},
 		clickAction: function (e) {
 			var that = this;
-			/*that.routesForDisplay.addObject({
-			 id: hashids.encode(new Date().getTime()),
-			 origin: [-7.291820, 112.722176],
-			 destination: [-7.372673, 112.729149],
-			 travelMode: 'driving',
-			 strokeColor: '#3333FF',
-			 strokeOpacity: 0.6,
-			 strokeWeight: 6,
-			 region: 'id'
-			 });*///don't remove above line, for educational purpose
 			that.markersForDisplay.addObject({
 				id: 0,
 				lat: e.latLng.A,
 				lng: e.latLng.F,
-				title: 'New Marker',
+				title: 'New Place',
 				draggable: true,
 				infoWindow: {
 					content: 'Click or move the marker to display new marker form.',
 					visible: true
 				},
 				click: function () {
-					that.toggleProperty('isShowingModal');
+					that.toggleProperty('isAddRowVisible');
 					that.set('newLat', e.latLng.A);
 					that.set('newLng', e.latLng.F);
 				},
 				dragend: function (f) {
-					that.toggleProperty('isShowingModal');
+					that.toggleProperty('isAddRowVisible');
 					that.set('newLat', f.latLng.A);
 					that.set('newLng', f.latLng.F);
 				}
 			});
+		},
+		createNew: function () {
+			const store = this.get('store');
+			var that = this;
+
+			// get name inputed, if blank return to input
+			var name = this.get('newName');
+			if (name && !name.trim()) {
+				this.set('newName', '');
+				return;
+			}
+
+			// create the new Weather model
+			var place = store.createRecord('place', {
+				name: name,
+				lat: this.get('newLat'),
+				lng: this.get('newLng')
+			});
+
+			// clear the "New Weather" text field
+			this.set('newName', '');
+			this.set('isAddRowVisible', false);
+
+			place.save().then(function () {
+				// refresh template
+				that.transitionToRoute('places');
+			});
+		},
+		deleteDatum: function (place) {
+			var that = this;
+			place.destroyRecord().then(function () {
+				// refresh template
+				that.transitionToRoute('places');
+			});
+		},
+		editDatum: function (place) {
+			place.save();
+			// refresh template
+			that.transitionToRoute('places');
 		},
 		refreshPlace(lat, lng){
 			this.set('lat', lat);
 			this.set('lng', lng);
 		},
 		itemSelected: function (item) {
-			//console.log('itemSelected triggered');
 			console.log(item.get('id'));
 			this.set('model', item);
 		},
 		refreshOptions: function (inputVal) {
-			//console.log('refreshOptions triggered');
 			var placeList = [];
 			var self = this;
 			var triggerSuggestions = this.get('triggerSuggestions');
@@ -102,7 +132,6 @@ export default Ember.Controller.extend({
 				});
 				self.set('places', placeList);
 				triggerSuggestions = triggerSuggestions + 1;
-				//console.log('set triggerSuggestions' + triggerSuggestions);
 				self.set('triggerSuggestions', triggerSuggestions);
 			});
 		}

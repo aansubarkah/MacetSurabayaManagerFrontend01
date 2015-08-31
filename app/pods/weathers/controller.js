@@ -59,9 +59,9 @@ export default Ember.Controller.extend({
 		deleteDatum: function (weather) {
 			var that = this;
 			weather.destroyRecord().then(function () {
-				//that.transitionToRoute('weathers');
+				that.transitionToRoute('weathers');
 				// refresh template
-				that.get('target.router').refresh();
+				//that.get('target.router').refresh();
 			});
 		},
 		editDatum: function (weather) {

@@ -27,9 +27,6 @@ export default Ember.Route.extend({
 			category: this.store.findAll('category'),
 			weather: this.store.findAll('weather'),
 			respondent: this.store.findAll('respondent')
-			/*category: this.store.query('category', query),
-			 weather: this.store.query('weather', query),
-			 respondent: this.store.query('respondent', query)*/
 		});
 
 	},
@@ -85,14 +82,14 @@ export default Ember.Route.extend({
 
 		var routesForDisplay = [];
 		/*var routesForDisplay = [{
-			id: hashids.encode(new Date().getTime()),
-			origin: [-7.291820, 112.722176],
-			destination: [-7.372673, 112.729149],
-			travelMode: 'driving',
-			strokeColor: '#3333FF',
-			strokeOpacity: 0.6,
-			strokeWeight: 6
-		}];*/
+		 id: hashids.encode(new Date().getTime()),
+		 origin: [-7.291820, 112.722176],
+		 destination: [-7.372673, 112.729149],
+		 travelMode: 'driving',
+		 strokeColor: '#3333FF',
+		 strokeOpacity: 0.6,
+		 strokeWeight: 6
+		 }];*/
 		controller.set('routesForDisplay', routesForDisplay);
 
 	},

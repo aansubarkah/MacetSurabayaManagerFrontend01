@@ -205,9 +205,10 @@ export default Ember.Controller.extend({
 		editDatum: function (place) {
 			place.save();
 			// refresh template
-			that.transitionToRoute('places');
+			this.transitionToRoute('places');
 		},
 		refreshPlace(lat, lng){
+			//console.info('lat:' + lat + ' lng:' + lng);
 			this.set('lat', lat);
 			this.set('lng', lng);
 		},

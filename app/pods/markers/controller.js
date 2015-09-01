@@ -22,10 +22,13 @@ export default Ember.Controller.extend({
 			// value which is suarasurabaya office
 			that.set('lat', currentLocation[0]);
 			that.set('lng', currentLocation[1]);
+			//console.log(currentLocation);
+			//that.set('lat', -7.347932);
+			//that.set('lng', 112.728073);
 		});
 	},
 	queryParams: ['lastminutes'],
-	//userLocation: null,
+	//lastminutes: 10080,
 	lat: -7.290293,
 	lng: 112.727226,
 	newLat: 0,
@@ -152,6 +155,7 @@ export default Ember.Controller.extend({
 		refreshPlace(lat, lng){
 			this.set('lat', lat);
 			this.set('lng', lng);
+			console.info('lat:'+lat+' lng:'+lng);
 		}
 	}
 });

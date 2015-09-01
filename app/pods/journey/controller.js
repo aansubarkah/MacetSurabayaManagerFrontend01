@@ -43,6 +43,8 @@ export default Ember.Controller.extend({
 			this.set('destination', [lat, lng]);
 		},
 		getRoute(){
+			//@todo refresh map before add route
+			//@todo or remove route before adding
 			this.set('routesForDisplay', []);
 			var origin = this.get('origin');
 

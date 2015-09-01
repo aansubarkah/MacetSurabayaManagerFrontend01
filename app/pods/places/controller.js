@@ -1,4 +1,7 @@
+//to make JSHint happy
+/*global Hashids:false*/
 import Ember from 'ember';
+var hashids = new Hashids("m4c3tsur4b4y4");
 var Place = Ember.Object.extend({id: '', name: ''});
 var Category = Ember.Object.extend({id: '', name: ''});
 var Weather = Ember.Object.extend({id: '', name: ''});
@@ -59,24 +62,24 @@ export default Ember.Controller.extend({
 		clickAction: function (e) {
 			var that = this;
 			that.markersForDisplay.addObject({
-				id: 0,
-				lat: e.latLng.A,
-				lng: e.latLng.F,
+				id: hashids.encode(new Date().getTime()),
+				lat: e.latLng.G,
+				lng: e.latLng.K,
 				title: 'New Place',
 				draggable: true,
 				infoWindow: {
-					content: 'Click or move the marker to display new marker form.',
+					content: 'Click or move the marker to display new place form.',
 					visible: true
 				},
 				click: function () {
 					that.toggleProperty('isAddRowVisible');
-					that.set('newPlaceLat', e.latLng.A);
-					that.set('newPlaceLng', e.latLng.F);
+					that.set('newPlaceLat', e.latLng.G);
+					that.set('newPlaceLng', e.latLng.K);
 				},
 				dragend: function (f) {
 					that.toggleProperty('isAddRowVisible');
-					that.set('newPlaceLat', f.latLng.A);
-					that.set('newPlaceLng', f.latLng.F);
+					that.set('newPlaceLat', f.latLng.G);
+					that.set('newPlaceLng', f.latLng.K);
 				}
 			});
 		},

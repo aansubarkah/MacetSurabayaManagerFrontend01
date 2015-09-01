@@ -2,7 +2,7 @@
 /*global moment:false*/
 /*global Hashids:false*/
 import Ember from 'ember';
-//var hashids = new Hashids("m4c3tsur4b4y4");
+var hashids = new Hashids("m4c3tsur4b4y4");
 var Category = Ember.Object.extend({id: '', name: ''});
 var Weather = Ember.Object.extend({id: '', name: ''});
 var Respondent = Ember.Object.extend({id: '', name: ''});
@@ -38,6 +38,9 @@ export default Ember.Controller.extend({
 	triggerSuggestions: 1,
 	actions: {
 		clickAction: function (e) {
+			//console.log(e);
+
+			//console.log(e.latLng);
 			var that = this;
 			/*that.routesForDisplay.addObject({
 			 id: hashids.encode(new Date().getTime()),
@@ -50,9 +53,9 @@ export default Ember.Controller.extend({
 			 region: 'id'
 			 });*///don't remove above line, for educational purpose
 			that.markersForDisplay.addObject({
-				id: 0,
-				lat: e.latLng.A,
-				lng: e.latLng.F,
+				id: hashids.encode(new Date().getTime()),
+				lat: e.latLng.G,
+				lng: e.latLng.K,
 				title: 'New Marker',
 				draggable: true,
 				infoWindow: {
@@ -61,13 +64,13 @@ export default Ember.Controller.extend({
 				},
 				click: function () {
 					that.toggleProperty('isShowingModal');
-					that.set('newLat', e.latLng.A);
-					that.set('newLng', e.latLng.F);
+					that.set('newLat', e.latLng.G);
+					that.set('newLng', e.latLng.K);
 				},
 				dragend: function (f) {
 					that.toggleProperty('isShowingModal');
-					that.set('newLat', f.latLng.A);
-					that.set('newLng', f.latLng.F);
+					that.set('newLat', f.latLng.G);
+					that.set('newLng', f.latLng.K);
 				}
 			});
 		},
@@ -155,7 +158,7 @@ export default Ember.Controller.extend({
 		refreshPlace(lat, lng){
 			this.set('lat', lat);
 			this.set('lng', lng);
-			console.info('lat:'+lat+' lng:'+lng);
+			//console.info('lat:'+lat+' lng:'+lng);
 		}
 	}
 });

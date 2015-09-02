@@ -1,0 +1,33 @@
+<td>{{basic-math index "+" firstRowNumber}}</td>
+<td>
+    {{#if isEditing}}
+        {{focus-input
+        type='text'
+        class='form-control'
+        placeholder='Edit respondent here, press enter to submit, blank means delete'
+        value=respondent.name
+        enter='save'
+        focus-out='cancel'
+        }}
+    {{else}}
+        <span {{action 'edit' on='doubleClick'}}>{{respondent.name}}</span>
+    {{/if}}
+</td>
+<td>
+    {{#if isEditing}}
+        {{input
+        type='text'
+        class='form-control'
+        placeholder="Edit respondent's contact here, press enter to submit"
+        value=respondent.contact
+        enter='save'
+        focus-out='cancel'
+        }}
+    {{else}}
+        <span {{action 'edit' on='doubleClick'}}>{{respondent.contact}}</span>
+
+        <div class="pull-right">
+            {{#hold-button type="rectangle" action="remove"}}Hold to Delete{{/hold-button}}
+        </div>
+    {{/if}}
+</td>

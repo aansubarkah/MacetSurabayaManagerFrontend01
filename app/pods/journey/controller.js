@@ -30,18 +30,18 @@ export default Ember.Controller.extend({
 	destination: [0, 0],
 	zoom: 16,
 	/*
-	avoidHighways: false,
-	avoidTolls: false,
-	tolls:[
-		{label: 'Avoid Tolls', value: true},
-		{label: 'Include Tolls', value: false}
-	],
-	highways:[
-		{label: 'Avoid Highways', value: true},
-		{label: 'Include Highways', value: false}
-	],
-	google maps api for indonesia not yet support this feature for surabaya's region
-	*/
+	 avoidHighways: false,
+	 avoidTolls: false,
+	 tolls:[
+	 {label: 'Avoid Tolls', value: true},
+	 {label: 'Include Tolls', value: false}
+	 ],
+	 highways:[
+	 {label: 'Avoid Highways', value: true},
+	 {label: 'Include Highways', value: false}
+	 ],
+	 google maps api for indonesia not yet support this feature for surabaya's region
+	 */
 	times: [
 		{label: '1 hour', value: 60},
 		{label: '6 hours', value: 360},
@@ -65,10 +65,10 @@ export default Ember.Controller.extend({
 		getRoute(){
 			//@todo refresh map before add route
 			//@todo or remove route before adding
+			//this.get('target.router').refresh();
 			//this.transitionToRoute('journey');
-			//console.log(this.get('avoidHighways'));
-			//console.log(this.get('avoidTolls'));
-			//this.set('routesForDisplay', []);
+
+			this.set('routesForDisplay', []);
 			var origin = this.get('origin');
 
 			this.set('lat', origin[0]);
@@ -79,9 +79,9 @@ export default Ember.Controller.extend({
 				origin: this.get('origin'),
 				destination: this.get('destination'),
 				/*
-				avoidHighways: this.get('avoidHighways'),
-				avoidTolls: this.get('avoidTolls'),
-				*/
+				 avoidHighways: this.get('avoidHighways'),
+				 avoidTolls: this.get('avoidTolls'),
+				 */
 				travelMode: 'driving',
 				strokeColor: '#3333FF',
 				strokeOpacity: 0.6,

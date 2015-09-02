@@ -24,27 +24,25 @@ export default Ember.Controller.extend({
 	},
 	queryParams: ['lastminutes'],
 	lastminutes: 30,
-	//classNames: ['select-picker', 'btn-group', 'form-control'],
 	lat: -7.290293,
 	lng: 112.727226,
 	origin: [-7.290293, 112.727226],
 	destination: [0, 0],
+	zoom: 16,
+	/*
 	avoidHighways: false,
 	avoidTolls: false,
-	zoom: 16,
-	avoidsPicked: null,
 	tolls:[
-		{label: 'Avoid Tolls', value: 1},
+		{label: 'Avoid Tolls', value: true},
+		{label: 'Include Tolls', value: false}
 	],
 	highways:[
-		{label: 'Avoid Highways', value: 1},
+		{label: 'Avoid Highways', value: true},
+		{label: 'Include Highways', value: false}
 	],
-	avoids: [
-		{label: 'Avoid Tolls', value: 'Tolls'},
-		{label: 'Avoid Highways', value: 'Highways'}
-	],
+	google maps api for indonesia not yet support this feature for surabaya's region
+	*/
 	times: [
-		{label: '30 minutes', value: 30},
 		{label: '1 hour', value: 60},
 		{label: '6 hours', value: 360},
 		{label: '12 hours', value: 720},
@@ -52,10 +50,6 @@ export default Ember.Controller.extend({
 		{label: '1 week', value: 10080}
 	],
 	actions: {
-		pickAvoids(){
-			console.log(options);
-			//console.log(this.get('avoidsPicked'));
-		},
 		refreshPlace(lat, lng){
 			this.set('lat', lat);
 			this.set('lng', lng);
@@ -72,7 +66,9 @@ export default Ember.Controller.extend({
 			//@todo refresh map before add route
 			//@todo or remove route before adding
 			//this.transitionToRoute('journey');
-			this.set('routesForDisplay', []);
+			//console.log(this.get('avoidHighways'));
+			//console.log(this.get('avoidTolls'));
+			//this.set('routesForDisplay', []);
 			var origin = this.get('origin');
 
 			this.set('lat', origin[0]);
@@ -82,8 +78,10 @@ export default Ember.Controller.extend({
 				id: hashids.encode(new Date().getTime()),
 				origin: this.get('origin'),
 				destination: this.get('destination'),
+				/*
 				avoidHighways: this.get('avoidHighways'),
 				avoidTolls: this.get('avoidTolls'),
+				*/
 				travelMode: 'driving',
 				strokeColor: '#3333FF',
 				strokeOpacity: 0.6,

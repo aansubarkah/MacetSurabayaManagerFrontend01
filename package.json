@@ -36,6 +36,7 @@
     "ember-cli-qunit": "^1.0.0",
     "ember-cli-release": "0.2.3",
     "ember-cli-sass": "4.0.1",
+    "ember-cli-select-picker": "2.2.0",
     "ember-cli-sri": "^1.0.3",
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "1.13.8",

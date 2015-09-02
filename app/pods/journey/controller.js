@@ -23,28 +23,55 @@ export default Ember.Controller.extend({
 		});
 	},
 	queryParams: ['lastminutes'],
-	lastminutes: 10080,
+	lastminutes: 30,
+	//classNames: ['select-picker', 'btn-group', 'form-control'],
 	lat: -7.290293,
 	lng: 112.727226,
 	origin: [-7.290293, 112.727226],
 	destination: [0, 0],
+	avoidHighways: false,
+	avoidTolls: false,
 	zoom: 16,
+	avoidsPicked: null,
+	tolls:[
+		{label: 'Avoid Tolls', value: 1},
+	],
+	highways:[
+		{label: 'Avoid Highways', value: 1},
+	],
+	avoids: [
+		{label: 'Avoid Tolls', value: 'Tolls'},
+		{label: 'Avoid Highways', value: 'Highways'}
+	],
+	times: [
+		{label: '30 minutes', value: 30},
+		{label: '1 hour', value: 60},
+		{label: '6 hours', value: 360},
+		{label: '12 hours', value: 720},
+		{label: '1 day', value: 1440},
+		{label: '1 week', value: 10080}
+	],
 	actions: {
+		pickAvoids(){
+			console.log(options);
+			//console.log(this.get('avoidsPicked'));
+		},
 		refreshPlace(lat, lng){
 			this.set('lat', lat);
 			this.set('lng', lng);
 		},
 		getOriginCoordinate(lat, lng){
-			console.log('origin lat:' + lat + ' lng:' + lng);
+			//console.log('origin lat:' + lat + ' lng:' + lng);
 			this.set('origin', [lat, lng]);
 		},
 		getDestinationCoordinate(lat, lng){
-			console.log('destination lat:' + lat + ' lng:' + lng);
+			//console.log('destination lat:' + lat + ' lng:' + lng);
 			this.set('destination', [lat, lng]);
 		},
 		getRoute(){
 			//@todo refresh map before add route
 			//@todo or remove route before adding
+			//this.transitionToRoute('journey');
 			this.set('routesForDisplay', []);
 			var origin = this.get('origin');
 
@@ -55,6 +82,8 @@ export default Ember.Controller.extend({
 				id: hashids.encode(new Date().getTime()),
 				origin: this.get('origin'),
 				destination: this.get('destination'),
+				avoidHighways: this.get('avoidHighways'),
+				avoidTolls: this.get('avoidTolls'),
 				travelMode: 'driving',
 				strokeColor: '#3333FF',
 				strokeOpacity: 0.6,

@@ -3,7 +3,7 @@
     <span {{action 'refreshMarkerview' on='click'}}>
         <strong>{{markerview.category_name}}</strong>&nbsp;di&nbsp;<strong>{{markerview.place_name}}</strong>
         &nbsp;karena&nbsp;{{markerview.info}}&nbsp;&nbsp;pada&nbsp;<strong>{{format-date markerview.created}}</strong>
-        &nbsp;({{markerview.created}}).&nbsp;Informasi oleh
+        &nbsp;({{format-time markerview.created}}).&nbsp;Informasi oleh
         &nbsp;<strong>{{markerview.respondent_name}}</strong>
         &nbsp;melalui&nbsp;<strong>{{markerview.respondent_contact}}</strong>
     </span>

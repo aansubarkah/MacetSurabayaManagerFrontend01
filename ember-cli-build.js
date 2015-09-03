@@ -4,7 +4,7 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
 	var app = new EmberApp(defaults, {
 		// Add options here
-		/*minifyCSS: {
+		minifyCSS: {
 			enabled: true
 		},
 		minifyJS: {
@@ -13,7 +13,7 @@ module.exports = function (defaults) {
 		sourcemaps: {
 			enabled: false,
 			extensions: ['js']
-		}*/
+		}
 	});
 
 	// Use `app.import` to add additional libraries to the generated

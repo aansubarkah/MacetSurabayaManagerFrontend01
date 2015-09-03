@@ -35,12 +35,13 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th>#</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {{#each markerview as |markerview index|}}
-                        {{markerview-item editDatum='editDatum' deleteDatum='deleteDatum' markerview=markerview refreshMarkerview='refreshMarkerview'}}
+                        {{markerview-item editDatum='editDatum' deleteDatum='deleteDatum' index=index firstRowNumber=firstRowNumber markerview=markerview refreshMarkerview='refreshMarkerview'}}
                     {{/each}}
                     </tbody>
                 </table>

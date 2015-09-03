@@ -9,6 +9,9 @@ export default Ember.Component.extend({
 		this._super(...arguments);
 		this.set('isEditing', false);
 		this.set('isShowingModal', false);
+		//if(this.get('markerview.place_name').trim()===''){
+		//	this.set('markerview.place_name', 'belum diberinama');
+		//}
 	},
 
 	actions: {

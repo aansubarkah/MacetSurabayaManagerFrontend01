@@ -1,0 +1,17 @@
+<td>
+    {{#if isEditing}}
+        {{focus-input
+        type='text'
+        class='form-control'
+        placeholder='Edit place here, press enter to submit, blank means delete'
+        value=place.name
+        enter='save'
+        focus-out='cancel'
+        }}
+    {{else}}
+        <span {{action 'edit' on='doubleClick'}}{{action 'refreshMarkerview' on='click'}}>
+            <strong>{{markerview.category_name}}</strong>&nbsp;di&nbsp;<strong>{{markerview.place_name}}</strong>
+            &nbsp;pada&nbsp;<strong>{{format-date markerview.created}}</strong>
+        </span>
+    {{/if}}
+</td>

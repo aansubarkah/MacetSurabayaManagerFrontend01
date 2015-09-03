@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	breadCrumb:{
+		title: 'Surabaya Traffic'
+	},
 	model: function (params) {
 		var query = {};
 		if (Ember.isPresent(params.page)) {

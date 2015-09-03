@@ -1,12 +1,10 @@
 //to make JSHint happy
 /*global moment:false*/
 import Ember from 'ember';
+moment.locale('id');
 
-//export function formatDate(params/*, hash*/) {
-  //return params;
-//}
+export function formatDate(params) {
+	return moment(params[0]).fromNow();
+}
 
-export default Ember.Handlebars.makeBoundHelper(function(date){
-	return moment(date).fromNow();
-});
-//export default Ember.Helper.helper(formatDate);
+export default Ember.Helper.helper(formatDate);

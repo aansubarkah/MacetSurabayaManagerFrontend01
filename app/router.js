@@ -23,6 +23,9 @@ Router.map(function () {
   this.route('places');
   this.route('place');
   this.route('journey');
+  this.route('traffic');
+  this.route('markerviews');
+  this.route('markerview');
 });
 
 export default Router;

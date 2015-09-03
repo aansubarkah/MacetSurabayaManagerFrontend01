@@ -6,6 +6,9 @@ moment.locale('id');
 var hashids = new Hashids("m4c3tsur4b4y4");
 
 export default Ember.Route.extend({
+	breadCrumb:{
+		title: 'Index'
+	},
 	model: function (params) {
 		var query = {};
 		//@warn do not remove followed lines
@@ -85,14 +88,14 @@ export default Ember.Route.extend({
 
 		var routesForDisplay = [];
 		/*var routesForDisplay = [{
-			id: hashids.encode(new Date().getTime()),
-			origin: [-7.291820, 112.722176],
-			destination: [-7.372673, 112.729149],
-			travelMode: 'driving',
-			strokeColor: '#3333FF',
-			strokeOpacity: 0.6,
-			strokeWeight: 6
-		}];*/
+		 id: hashids.encode(new Date().getTime()),
+		 origin: [-7.291820, 112.722176],
+		 destination: [-7.372673, 112.729149],
+		 travelMode: 'driving',
+		 strokeColor: '#3333FF',
+		 strokeOpacity: 0.6,
+		 strokeWeight: 6
+		 }];*/
 		controller.set('routesForDisplay', routesForDisplay);
 
 	},

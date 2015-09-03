@@ -1,7 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	beforeModel: function () {
-		this.transitionTo('markers');
+	breadCrumb:{
+		title: 'Surabaya Traffic'
 	}
+	/*beforeModel: function () {
+		this.transitionTo('markers');
+	}*/
 });

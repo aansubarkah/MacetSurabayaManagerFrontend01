@@ -1,0 +1,76 @@
+<style>
+    .ember-cli-g-map {
+        height: 450px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-8">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Traffic</h3>
+
+                <div class="box-tools">
+                    <div class="input-group">
+                        {{gmap-search refreshPlace='refreshPlace' elementId='searchPlaceText'}}
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                {{g-maps name="traffic-map" lat=lat lng=lng zoom=zoom click="clickAction" markers=markersForDisplay}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-tools">
+                    <div class="input-group">
+                        {{input type="text" classNames="form-control" placeholder="Search" value=query}}
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each markerview as |markerview index|}}
+                        {{markerview-item editDatum='editDatum' deleteDatum='deleteDatum' markerview=markerview refreshMarkerview='refreshMarkerview'}}
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <p class="pull-left">Displaying row {{firstRowNumber}} to {{lastRowNumber}} from {{total}} rows</p>
+
+                <div class="box-tools">
+                    {{pagination-pager count=totalPages current=page}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{marker-new
+isShowingModal=isShowingModal
+newLat=newLat
+newLng=newLng
+categories=categories
+category=category
+triggerSuggestions=triggerSuggestions
+refreshOptionsCategory="refreshOptionsCategory"
+itemSelectedCategory="itemSelectedCategory"
+weathers=weathers
+weather=weather
+refreshOptionsWeather="refreshOptionsWeather"
+itemSelectedWeather="itemSelectedWeather"
+respondent=respondent
+respondents=respondents
+refreshOptionsRespondent="refreshOptionsRespondent"
+itemSelectedRespondent="itemSelectedRespondent"
+createNew="createNew"
+}}

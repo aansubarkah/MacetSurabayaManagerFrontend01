@@ -6,6 +6,9 @@ moment.locale('id');
 var hashids = new Hashids("m4c3tsur4b4y4");
 
 export default Ember.Route.extend({
+	breadCrumb:{
+		title: 'Surabaya Traffic'
+	},
 	model: function (params) {
 		var query = {};
 		//@warn do not remove followed lines

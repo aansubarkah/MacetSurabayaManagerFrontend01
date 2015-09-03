@@ -24,6 +24,13 @@ export default DS.Model.extend({
 	created: DS.attr('string'),
 	modified: DS.attr('string'),
 	info: DS.attr('string'),
+	category_name: DS.attr('string', {defaultValue: ''}),
+	username: DS.attr('string', {defaultValue: ''}),
+	user_email: DS.attr('string', {defaultValue: ''}),
+	respondent_name: DS.attr('string', {defaultValue: ''}),
+	respondent_contact: DS.attr('string', {defaultValue: ''}),
+	weather_name: DS.attr('string', {defaultValue: ''}),
+	place_name: DS.attr('string', {defaultValue: ''}),
 	pinned: DS.attr('boolean', {defaultValue: 0}),
 	cleared: DS.attr('boolean', {defaultValue: 0}),
 	active: DS.attr('boolean', {defaultValue: 1})

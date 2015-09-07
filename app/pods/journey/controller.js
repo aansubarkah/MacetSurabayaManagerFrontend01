@@ -43,6 +43,7 @@ export default Ember.Controller.extend({
 	 google maps api for indonesia not yet support this feature for surabaya's region
 	 */
 	times: [
+		{label: '30 minutes', value: 30},
 		{label: '1 hour', value: 60},
 		{label: '6 hours', value: 360},
 		{label: '12 hours', value: 720},

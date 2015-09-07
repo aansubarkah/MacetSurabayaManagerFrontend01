@@ -19,6 +19,17 @@
             <div class="box-body">
                 {{g-maps name="traffic-map" lat=lat lng=lng zoom=zoom click="clickAction" markers=markersForDisplay}}
             </div>
+            <div class="box-footer clearfix">
+                <div class="box-tools">
+                    <div class="form-group pull-right">
+                        {{select-picker value=lastminutes
+                        content=times
+                        optionLabelPath="content.label"
+                        optionValuePath="content.value"
+                        nothingSelectedMessage="Traffic about 30 minutes ago"}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-md-4">
@@ -26,7 +37,7 @@
             <div class="box-header">
                 <div class="box-tools">
                     <div class="input-group">
-                        {{input type="text" classNames="form-control" placeholder="Search" value=query}}
+                        {{input type="text" classNames="form-control" placeholder="Search Place" value=query}}
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
                     </div>
                 </div>
@@ -41,7 +52,7 @@
                     </thead>
                     <tbody>
                     {{#each markerview as |markerview index|}}
-                        {{markerview-item editDatum='editDatum' deleteDatum='deleteDatum' index=index firstRowNumber=firstRowNumber markerview=markerview refreshMarkerview='refreshMarkerview'}}
+                        {{markerview-item editDatum='editDatum' deleteDatum='deleteDatum' index=index firstRowNumber=firstRowNumber markerview=markerview refreshPlace='refreshPlace'}}
                     {{/each}}
                     </tbody>
                 </table>

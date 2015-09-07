@@ -46,10 +46,10 @@ export default Ember.Component.extend({
 		toggleAddModal(){
 			this.toggleProperty('isShowingModal');
 		},
-		refreshMarkerview(){
+		refreshPlace(){
 			var lat = this.get('markerview.lat');
 			var lng = this.get('markerview.lng');
-			this.sendAction('refreshMarkerview', lat, lng);
+			this.sendAction('refreshPlace', lat, lng);
 		}
 	}
 });

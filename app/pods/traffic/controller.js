@@ -8,10 +8,11 @@ var Weather = Ember.Object.extend({id: '', name: ''});
 var Respondent = Ember.Object.extend({id: '', name: ''});
 
 export default Ember.Controller.extend({
-	queryParams: ['page', 'limit', 'query'],
+	queryParams: ['page', 'limit', 'query', 'lastminutes'],
 	page: 1,
 	limit: 5,
 	query: '',
+	lastminutes: 30,
 	total: null,
 	totalPages: function () {
 		return Math.ceil(this.get('total') / this.limit);
@@ -42,6 +43,14 @@ export default Ember.Controller.extend({
 	isAddRowVisible: false,
 	isShowingModal: false,
 	triggerSuggestions: 1,
+	times: [
+		{label: '30 minutes', value: 30},
+		{label: '1 hour', value: 60},
+		{label: '6 hours', value: 360},
+		{label: '12 hours', value: 720},
+		{label: '1 day', value: 1440},
+		{label: '1 week', value: 10080}
+	],
 	init: function () {
 		var that = this;
 		this.get('geolocation').getLocation().then(function () {
@@ -60,27 +69,26 @@ export default Ember.Controller.extend({
 		},
 		// when map is clicked, add marker
 		clickAction: function (e) {
-			console.log(this.get('markersForDisplay'));
 			var that = this;
 			that.markersForDisplay.addObject({
 				id: hashids.encode(new Date().getTime()),
 				lat: e.latLng.G,
 				lng: e.latLng.K,
-				title: 'New Place',
+				title: 'New Marker',
 				draggable: true,
 				infoWindow: {
-					content: 'Click or move the marker to display new place form.',
+					content: 'Click or move the marker to display new marker form.',
 					visible: true
 				},
 				click: function () {
-					that.toggleProperty('isAddRowVisible');
-					that.set('newPlaceLat', e.latLng.G);
-					that.set('newPlaceLng', e.latLng.K);
+					that.toggleProperty('isShowingModal');
+					that.set('newLat', e.latLng.G);
+					that.set('newLng', e.latLng.K);
 				},
 				dragend: function (f) {
-					that.toggleProperty('isAddRowVisible');
-					that.set('newPlaceLat', f.latLng.G);
-					that.set('newPlaceLng', f.latLng.K);
+					that.toggleProperty('isShowingModal');
+					that.set('newLat', f.latLng.G);
+					that.set('newLng', f.latLng.K);
 				}
 			});
 		},
@@ -126,7 +134,6 @@ export default Ember.Controller.extend({
 			});
 		},
 		itemSelectedRespondent: function (item) {
-			//console.log(item.get('id'));
 			this.set('respondent', item);
 		},
 		refreshOptionsRespondent: function (inputVal) {
@@ -169,34 +176,7 @@ export default Ember.Controller.extend({
 			marker.save().then(function () {
 				// @warn refresh template
 				//that.get('target.router').refresh();
-				that.transitionToRoute('markers');
-			});
-		},
-		createNewPlace: function () {
-			const store = this.get('store');
-			var that = this;
-
-			// get name inputed, if blank return to input
-			var name = this.get('newPlaceName');
-			if (name && !name.trim()) {
-				this.set('newPlaceName', '');
-				return;
-			}
-
-			// create the new Weather model
-			var place = store.createRecord('place', {
-				name: name,
-				lat: this.get('newPlaceLat'),
-				lng: this.get('newPlaceLng')
-			});
-
-			// clear the "New Weather" text field
-			this.set('newPlaceName', '');
-			this.set('isAddRowVisible', false);
-
-			place.save().then(function () {
-				// refresh template
-				that.transitionToRoute('places');
+				that.transitionToRoute('traffic');
 			});
 		},
 		deleteDatum: function (place) {
@@ -211,13 +191,8 @@ export default Ember.Controller.extend({
 			// refresh template
 			this.transitionToRoute('places');
 		},
-		refreshMarkerview(lat, lng){
-			//console.info('lat:' + lat + ' lng:' + lng);
-			this.set('lat', lat);
-			this.set('lng', lng);
-		},
 		itemSelected: function (item) {
-			console.log(item.get('id'));
+			//console.log(item.get('id'));
 			this.set('model', item);
 		},
 		refreshOptions: function (inputVal) {
@@ -236,6 +211,10 @@ export default Ember.Controller.extend({
 				triggerSuggestions = triggerSuggestions + 1;
 				self.set('triggerSuggestions', triggerSuggestions);
 			});
+		},
+		refreshPlace(lat, lng){
+			this.set('lat', lat);
+			this.set('lng', lng);
 		}
 	}
 });

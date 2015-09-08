@@ -39,12 +39,12 @@ module.exports = function (defaults) {
 	app.import('bower_components/admin-lte/dist/js/app.min.js');
 
 	// AdminLTE plugins
-	app.import('bower_components/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js');
+	//app.import('bower_components/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js');
 
-	app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.js');
+	//app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.js');
 	//app.import('bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.css');
-	app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.min.js');
-	app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css');
+	//app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.min.js');
+	//app.import('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css');
 
 	// EmberTable
 	//app.import('bower_components/ember-table/dist/ember-table.min.js');

@@ -29,6 +29,7 @@ export default Ember.Controller.extend({
 	origin: [-7.290293, 112.727226],
 	destination: [0, 0],
 	zoom: 16,
+	isUsed: false,
 	/*
 	 avoidHighways: false,
 	 avoidTolls: false,
@@ -68,6 +69,7 @@ export default Ember.Controller.extend({
 			//@todo or remove route before adding
 			//this.get('target.router').refresh();
 			//this.transitionToRoute('journey');
+			this.toggleProperty('isUsed');
 
 			this.set('routesForDisplay', []);
 			var origin = this.get('origin');
@@ -89,6 +91,9 @@ export default Ember.Controller.extend({
 				strokeWeight: 6,
 				region: 'id'
 			});
+		},
+		toJourney(){
+			this.transitionToRoute('tojourney');
 		}
 	}
 });

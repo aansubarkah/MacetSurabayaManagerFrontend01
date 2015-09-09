@@ -7,6 +7,12 @@
     <div class="box-header">
         <h3 class="box-title">Traffic Map&nbsp;</h3>
 
+        {{select-picker value=lastminutes
+        content=times
+        optionLabelPath="content.label"
+        optionValuePath="content.value"
+        nothingSelectedMessage="Traffic about 30 minutes ago"}}
+
         <div class="box-tools">
             <div class="input-group">
                 {{#gmap-search refreshPlace='refreshPlace' elementId='searchPlaceText'}}{{/gmap-search}}

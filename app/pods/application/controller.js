@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
 		'state'
 	],
 	isManager: true,
-	username: "John",
+	username: "John Doe",
 	page: 1,
 	limit: 1,
 	actions: {

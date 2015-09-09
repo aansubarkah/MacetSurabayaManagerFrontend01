@@ -27,6 +27,7 @@ Router.map(function () {
   this.route('markerviews');
   this.route('markerview');
   this.route('loading');
+  this.route('tojourney');
 });
 
 export default Router;

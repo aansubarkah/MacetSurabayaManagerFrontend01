@@ -26,6 +26,7 @@ Router.map(function () {
   this.route('traffic');
   this.route('markerviews');
   this.route('markerview');
+  this.route('loading');
 });
 
 export default Router;

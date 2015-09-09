@@ -1,6 +1,6 @@
 {
   "name": "macet-surabaya-manager-frontend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small description for macet-surabaya-manager-frontend goes here",
   "private": true,
   "directories": {
@@ -38,6 +38,7 @@
     "ember-cli-sass": "4.0.1",
     "ember-cli-select-picker": "2.2.0",
     "ember-cli-sri": "^1.0.3",
+    "ember-cli-timer": "0.0.2",
     "ember-cli-uglify": "^1.2.0",
     "ember-crumbly": "0.2.2",
     "ember-data": "1.13.8",
@@ -48,5 +49,6 @@
     "ember-ufo-loading": "0.0.4",
     "ember-validations": "2.0.0-alpha.4",
     "pagination-pager": "2.1.1"
-  }
+  },
+  "dependencies": {}
 }

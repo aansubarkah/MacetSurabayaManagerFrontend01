@@ -6,7 +6,7 @@ moment.locale('id');
 var hashids = new Hashids("m4c3tsur4b4y4");
 
 export default Ember.Route.extend({
-	breadCrumb:{
+	breadCrumb: {
 		title: 'Index'
 	},
 	model: function (params) {

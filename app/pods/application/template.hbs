@@ -1,5 +1,5 @@
 <div class="wrapper">
-    {{#if isManager}}
+    {{#if session.isAuthenticated}}
         {{partial "application/manager"}}
     {{else}}
         {{partial "application/guest"}}

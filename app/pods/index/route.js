@@ -2,10 +2,13 @@
 /*global moment:false*/
 /*global Hashids:false*/
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+
 moment.locale('id');
 var hashids = new Hashids("m4c3tsur4b4y4");
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
+//export default Ember.Route.extend({
 	breadCrumb: {
 		title: 'Index'
 	},

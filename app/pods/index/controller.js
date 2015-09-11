@@ -7,6 +7,7 @@ var Weather = Ember.Object.extend({id: '', name: ''});
 var Respondent = Ember.Object.extend({id: '', name: ''});
 
 export default Ember.Controller.extend({
+	session: Ember.inject.service('session:main'),
 	geolocation: Ember.inject.service(),
 	userLocation: null,
 	init: function () {

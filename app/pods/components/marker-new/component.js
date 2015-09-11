@@ -17,6 +17,7 @@ export default Ember.Component.extend({
 		//this.set('lng', 0);
 		this.set('info', '');
 		this.set('newPinned', false);
+		this.set('selection', null);
 	},
 	actions: {
 		toggleAddModal(){

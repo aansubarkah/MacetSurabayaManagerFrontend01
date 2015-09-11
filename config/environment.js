@@ -17,6 +17,10 @@ module.exports = function (environment) {
 		APP: {
 			// Here you can pass flags/options to your application instance
 			// when it is created
+			namespace: 'manager',
+			//host: 'http://apitraffic.aansubarkah.net',
+			host: 'http://localhost:8765',// @todo change this on production server
+			apiVersion: '1.1'
 		},
 
 		contentSecurityPolicy: {
@@ -35,10 +39,11 @@ module.exports = function (environment) {
 		}
 	};
 
-	/*ENV['simple-auth'] = {
+	ENV['simple-auth'] = {
 		authorizer: 'simple-auth-authorizer:token',
+		//crossOriginWhitelist:['*'],
 		crossOriginWhitelist: ['http://localhost:8765'],// @todo change this on production server
-		store: 'simple-auth-session-store:local-storage'
+		store: 'session-store:local-storage'
 	};
 
 	ENV['simple-auth-token'] = {
@@ -48,13 +53,13 @@ module.exports = function (environment) {
 		tokenPropertyName: 'token',
 		authorizationPrefix: 'Bearer ',
 		authorizationHeaderName: 'Authorization',
-		header: {},
+		headers: {},
 		refreshAccessTokens: true,
 		serverTokenRefreshEndpoint: 'http://localhost:8765/manager/users/token',// @todo change this on production server
 		tokenExpireName: 'exp',
 		refreshLeeway: 0, // Refresh the token 5 minutes (300s) before it expires.
 		timeFactor: 1000
-	};*/
+	};
 
 	if (environment === 'development') {
 		//ENV.APP.LOG_RESOLVER = true;

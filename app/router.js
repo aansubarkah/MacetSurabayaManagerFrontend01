@@ -28,6 +28,7 @@ Router.map(function () {
   this.route('markerview');
   this.route('loading');
   this.route('tojourney');
+  this.route('twitter');
 });
 
 export default Router;

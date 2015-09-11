@@ -60,6 +60,7 @@ module.exports = function (defaults) {
 
 	// Moment.js
 	app.import('bower_components/moment/min/moment-with-locales.min.js');
+	app.import('bower_components/moment-timezone/builds/moment-timezone-with-data.min.js');
 
 	// Hashids
 	app.import('bower_components/hashids/lib/hashids.min.js');

@@ -4,6 +4,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	session: Ember.inject.service('session:main'),
 	state: 'all',
 	queryParams: [
 		'state'
@@ -12,21 +13,16 @@ export default Ember.Controller.extend({
 	username: "John Doe",
 	page: 1,
 	limit: 1,
+	init:function(){
+		//console.log(this.get('session'));
+	},
 	actions: {
 		doRefresh: function () {
 			this.get('target.router').refresh();
+		},
+		invalidateSession: function () {
+			this.get('session').invalidate();
+			//this.transitionToRoute('index');
 		}
-		/*invalidateSession: function () {
-		 this.get('session').invalidate();
-		 this.transitionToRoute('/');
-		 }*/
 	}
 });
-/*
- * actions: {
- invalidateSession: function () {
- this.get('session').invalidate();
- this.transitionToRoute('/');
- }
- }
- * */
